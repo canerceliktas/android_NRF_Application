@@ -39,10 +39,12 @@ public class WelcomeScreenActivity extends Activity {
     private boolean isReconnect = false;
     private boolean mConnected = false;
 
+
     Button mCustomDesign;
     Button mProgramSelect;
     Button mProgramLoad;
     Button mMaintance;
+    Button mColorPicker;
     Button mExit;
     private String mDeviceName;
     private String mDeviceAddress;
@@ -83,6 +85,7 @@ public class WelcomeScreenActivity extends Activity {
                 mProgramSelect.setEnabled(true);
                 mMaintance.setEnabled(true);
                 mProgramLoad.setEnabled(true);
+                mColorPicker.setEnabled(true);
                 updateConnectionState(R.string.connected);
                 invalidateOptionsMenu();
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
@@ -92,6 +95,7 @@ public class WelcomeScreenActivity extends Activity {
                 mProgramSelect.setEnabled(false);
                 mMaintance.setEnabled(false);
                 mProgramLoad.setEnabled(false);
+                mColorPicker.setEnabled(false);
                 invalidateOptionsMenu();
                 clearUI();
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
@@ -143,6 +147,7 @@ public class WelcomeScreenActivity extends Activity {
         mProgramSelect = (Button) findViewById(R.id.ProgramSelect);
         mMaintance = (Button) findViewById(R.id.Maintenance);
         mProgramLoad = (Button) findViewById(R.id.LoadCustomProgram);
+        mColorPicker = (Button) findViewById(R.id.ColorPicker);
         final Intent intent = getIntent();
         mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
         mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
@@ -195,6 +200,17 @@ public class WelcomeScreenActivity extends Activity {
                 intent_2.putExtra(WelcomeScreenActivity.EXTRAS_DEVICE_ADDRESS, mDeviceAddress);
 
                 startActivity(intent_2);
+            }
+        });
+
+        mColorPicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final  Intent intent_3 = new Intent(WelcomeScreenActivity.this, ColourPalette.class);
+                intent_3.putExtra(WelcomeScreenActivity.EXTRAS_DEVICE_NAME, mDeviceName);
+                intent_3.putExtra(WelcomeScreenActivity.EXTRAS_DEVICE_ADDRESS, mDeviceAddress);
+
+                startActivity(intent_3);
             }
         });
 
