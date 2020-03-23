@@ -13,6 +13,7 @@ import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -129,9 +130,17 @@ public class ColourPalette extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colour_palette);
         mColorPickerView = (ColorPickerView) findViewById(R.id.colorPickerView);
+
         mRedValue = (EditText) findViewById(R.id.Red_Value);
+        mRedValue.setFilters(new InputFilter[]{new MinMaxFilter("0","255")});//Alabileceği değer 0-255 arası olsun diye filter ekledik
+
         mGreenValue = (EditText) findViewById(R.id.Green_Value);
+        mGreenValue.setFilters(new InputFilter[]{new MinMaxFilter("0","255")});
+
         mBlueValue = (EditText) findViewById(R.id.Blue_Value);
+        mBlueValue.setFilters(new InputFilter[]{new MinMaxFilter("0","255")});
+
+
         mFinalValue = (TextView) findViewById(R.id.finalColorValue);
         mSendButton = (Button) findViewById(R.id.Color_Send_Button);
         //openColorPicker();
@@ -160,13 +169,28 @@ public class ColourPalette extends AppCompatActivity {
                 color = colorEnvelope.getColor();
 
                 mRedValue.setText("" +colorRGB[0]);
-                RedValue = Integer.parseInt(mRedValue.getText().toString());
+                String change = mRedValue.getText().toString(); //NumberFormatException hatası için. Edittext boş olunca bu hataya düşüyor
+                if (change.equals("")){ // detect an empty string and set it to "0" instead
+                    change = "0";
+                }
+                RedValue = Integer.parseInt(change);
+               // RedValue = Integer.parseInt(mRedValue.getText().toString());
 
                 mGreenValue.setText(""+colorRGB[1]);
-                GreenValue = Integer.parseInt(mGreenValue.getText().toString());
+                change = mGreenValue.getText().toString();//NumberFormatException hatası için. Edittext boş olunca bu hataya düşüyor
+                if (change.equals("")){ // detect an empty string and set it to "0" instead
+                    change = "0";
+                }
+                GreenValue = Integer.parseInt(change);
+                //GreenValue = Integer.parseInt(mGreenValue.getText().toString());
 
                 mBlueValue.setText(""+colorRGB[2]);
-                BlueValue = Integer.parseInt(mBlueValue.getText().toString());
+                change = mBlueValue.getText().toString();//NumberFormatException hatası için. Edittext boş olunca bu hataya düşüyor
+                if (change.equals("")){ // detect an empty string and set it to "0" instead
+                    change = "0";
+                }
+                BlueValue = Integer.parseInt(change);
+                //BlueValue = Integer.parseInt(mBlueValue.getText().toString());
 
                 mFinalValue.setText(""+htmlColor);
                 mFinalValue.setBackgroundColor(color);
@@ -195,7 +219,7 @@ public class ColourPalette extends AppCompatActivity {
                 RedValue = Integer.parseInt(change);
                 datatoSendbyte[0] = (byte) RedValue;
 
-//                color = 0xFFFF * RedValue + 0xFF * GreenValue + BlueValue;
+//                color = (byte) (65535 * RedValue + 255 * GreenValue + BlueValue);
 //                mFinalValue.setBackgroundColor(color);
             }
         });
