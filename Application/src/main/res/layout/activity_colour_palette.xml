@@ -57,8 +57,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout11"
-        android:layout_width="131dp"
-        android:layout_height="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
@@ -67,25 +67,25 @@
 
         <EditText
             android:id="@+id/Red_Value"
-            android:layout_width="match_parent"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
-            android:maxLength="3"
             android:inputType="numberDecimal"
+            android:maxLength="3"
             android:text="0"
             android:textSize="16dp" />
 
         <EditText
             android:id="@+id/Green_Value"
-            android:layout_width="match_parent"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
-            android:maxLength="3"
             android:inputType="numberDecimal"
+            android:maxLength="3"
             android:text="0"
             android:textSize="16dp" />
 
         <EditText
             android:id="@+id/Blue_Value"
-            android:layout_width="match_parent"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:maxLength="3"
             android:inputType="numberDecimal"
@@ -97,31 +97,41 @@
 
         android:id="@+id/Color_Send_Button"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="126dp"
-        android:layout_height="41dp"
+        android:layout_width="125dp"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/custom_button_send"
         android:text="Send Color"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayout13"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout13"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout13" />
 
     <TextView
         android:id="@+id/finalColorValue"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/textview_border"
+        android:textAllCaps="true"
         android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Color_Send_Button"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/margin_16_dp"
+        android:layout_marginRight="@dimen/margin_16_dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout11"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.34"
-        app:layout_constraintStart_toEndOf="@+id/Color_Send_Button"
-        app:layout_constraintTop_toTopOf="@+id/Color_Send_Button"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/linearLayout11"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout11" />
 
+    <TextView
+        android:id="@+id/color_decimal"
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout11"
+        app:layout_constraintEnd_toEndOf="@+id/finalColorValue"
+        app:layout_constraintStart_toStartOf="@+id/finalColorValue"
+        app:layout_constraintTop_toBottomOf="@+id/finalColorValue" />
 
 
 </android.support.constraint.ConstraintLayout>

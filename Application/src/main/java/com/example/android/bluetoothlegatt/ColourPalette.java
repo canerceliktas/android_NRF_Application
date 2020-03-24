@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +39,7 @@ import yuku.ambilwarna.AmbilWarnaDialog;
 import static android.content.ContentValues.TAG;
 
 public class ColourPalette extends AppCompatActivity {
+
     int mDefaultColor = 0;
     int color;
     String htmlColor;
@@ -46,8 +49,9 @@ public class ColourPalette extends AppCompatActivity {
     ColorPickerView mColorPickerView;
 
     private EditText mRedValue, mGreenValue, mBlueValue;
-    private TextView mFinalValue;
+    private TextView mFinalValue, mColorDecimal;
     private Button mSendButton;
+    private GradientDrawable mFinalValueBG;
 
     private BluetoothLeService mBluetoothLeService;
     private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
@@ -140,9 +144,12 @@ public class ColourPalette extends AppCompatActivity {
         mBlueValue = (EditText) findViewById(R.id.Blue_Value);
         mBlueValue.setFilters(new InputFilter[]{new MinMaxFilter("0","255")});
 
-
+        mColorDecimal = (TextView) findViewById(R.id.color_decimal);
         mFinalValue = (TextView) findViewById(R.id.finalColorValue);
         mSendButton = (Button) findViewById(R.id.Color_Send_Button);
+
+        mFinalValueBG = (GradientDrawable) mFinalValue.getBackground();
+
         //openColorPicker();
         final Intent intent = getIntent();
         mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
@@ -167,6 +174,7 @@ public class ColourPalette extends AppCompatActivity {
                 colorRGB = colorEnvelope.getColorRGB();
                 htmlColor = colorEnvelope.getColorHtml();
                 color = colorEnvelope.getColor();
+
 
                 mRedValue.setText("" +colorRGB[0]);
                 String change = mRedValue.getText().toString(); //NumberFormatException hatası için. Edittext boş olunca bu hataya düşüyor
@@ -193,7 +201,11 @@ public class ColourPalette extends AppCompatActivity {
                 //BlueValue = Integer.parseInt(mBlueValue.getText().toString());
 
                 mFinalValue.setText(""+htmlColor);
-                mFinalValue.setBackgroundColor(color);
+               // mFinalValue.setBackgroundColor(color);
+                mFinalValueBG.setColor(color);
+                mFinalValue.setBackgroundResource(R.drawable.textview_border);
+
+                mColorDecimal.setText(""+mColorPickerView.getSelectedPoint()); //kaldırılacak
 
 
             }
@@ -219,8 +231,15 @@ public class ColourPalette extends AppCompatActivity {
                 RedValue = Integer.parseInt(change);
                 datatoSendbyte[0] = (byte) RedValue;
 
-//                color = (byte) (65535 * RedValue + 255 * GreenValue + BlueValue);
-//                mFinalValue.setBackgroundColor(color);
+                color = (255 & 0xff) << 24 | (RedValue & 0xff) << 16 | (GreenValue & 0xff) << 8 | (BlueValue & 0xff);
+                mFinalValueBG.setColor(color);
+
+                color = color ^ 0xFF000000;
+
+                String hexColor = Integer.toHexString(color);
+                mFinalValue.setText(""+hexColor);
+
+                mFinalValue.setBackgroundResource(R.drawable.textview_border);
             }
         });
 
@@ -244,8 +263,15 @@ public class ColourPalette extends AppCompatActivity {
                 GreenValue = Integer.parseInt(change);
                 datatoSendbyte[1] = (byte) GreenValue;
 
-//                color = 0xFFFF * RedValue + 0xFF * GreenValue + BlueValue;
-//                mFinalValue.setBackgroundColor(color);
+                color = (255 & 0xff) << 24 | (RedValue & 0xff) << 16 | (GreenValue & 0xff) << 8 | (BlueValue & 0xff);
+                mFinalValueBG.setColor(color);
+
+                color = color ^ 0xFF000000;
+
+                String hexColor = Integer.toHexString(color);
+                mFinalValue.setText(""+hexColor);
+
+                mFinalValue.setBackgroundResource(R.drawable.textview_border);
             }
         });
 
@@ -269,8 +295,15 @@ public class ColourPalette extends AppCompatActivity {
                 BlueValue = Integer.parseInt(change);
                 datatoSendbyte[2] = (byte) BlueValue;
 
-//                color = 0xFFFF * RedValue + 0xFF * GreenValue + BlueValue;
-//                mFinalValue.setBackgroundColor(color);
+                color = (255 & 0xff) << 24 | (RedValue & 0xff) << 16 | (GreenValue & 0xff) << 8 | (BlueValue & 0xff);
+                mFinalValue.setBackgroundColor(color);
+
+                color = color ^ 0xFF000000;
+
+                String hexColor = Integer.toHexString(color);
+                mFinalValue.setText(""+hexColor);
+
+                mFinalValue.setBackgroundResource(R.drawable.textview_border);
             }
         });
 
@@ -278,6 +311,7 @@ public class ColourPalette extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    mColorPickerView.setSelectorPoint(220,470);
                     //karakteristiğe yazma kısmı buraya alındı. (debug modda çalılıyordu release de çalışmıyıordu)
                     BluetoothGattCharacteristic characteristic = mGattCharacteristics.get(2).get(2);
 
@@ -327,8 +361,6 @@ public class ColourPalette extends AppCompatActivity {
                 else{
 
                 }
-
-
             }
         });
     }
