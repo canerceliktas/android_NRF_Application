@@ -206,7 +206,7 @@ public class WelcomeScreenActivity extends Activity {
         mColorPicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final  Intent intent_3 = new Intent(WelcomeScreenActivity.this, ColourPalette.class);
+                final  Intent intent_3 = new Intent(WelcomeScreenActivity.this, ControllerTab.class);
                 intent_3.putExtra(WelcomeScreenActivity.EXTRAS_DEVICE_NAME, mDeviceName);
                 intent_3.putExtra(WelcomeScreenActivity.EXTRAS_DEVICE_ADDRESS, mDeviceAddress);
 

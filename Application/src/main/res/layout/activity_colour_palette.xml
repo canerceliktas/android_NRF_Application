@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#a3a3a3"
-    tools:context=".ColourPalette">
+    tools:context=".ControllerTab">
 
     <LinearLayout
         android:id="@+id/linearLayout12"
