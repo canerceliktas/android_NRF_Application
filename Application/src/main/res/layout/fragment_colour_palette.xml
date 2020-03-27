@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#a3a3a3"
+    tools:context=".ControllerTab">
+
+    <LinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="319dp"
+        android:layout_height="343dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.skydoves.colorpickerpreference.ColorPickerView
+            android:id="@+id/colorPickerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:palette="@drawable/palette"
+            app:selector="@drawable/wheel" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout11"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout12"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout11">
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Red     :"
+            android:textSize="32dp" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Green :"
+            android:textSize="32dp" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blue    :"
+            android:textSize="32dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout13"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
+
+        <EditText
+            android:id="@+id/Red_Value"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="3"
+            android:text="0"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/Green_Value"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="3"
+            android:text="0"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/Blue_Value"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:maxLength="3"
+            android:inputType="numberDecimal"
+            android:text="0"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <Button
+
+        android:id="@+id/Color_Send_Button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="125dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_button_send"
+        android:text="Send Color"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout13"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout13" />
+
+    <TextView
+        android:id="@+id/finalColorValue"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textview_border"
+        android:textAllCaps="true"
+        android:textSize="24dp"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/margin_16_dp"
+        android:layout_marginRight="@dimen/margin_16_dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout11"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout11" />
+
+    <TextView
+        android:id="@+id/color_decimal"
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout11"
+        app:layout_constraintEnd_toEndOf="@+id/finalColorValue"
+        app:layout_constraintStart_toStartOf="@+id/finalColorValue"
+        app:layout_constraintTop_toBottomOf="@+id/finalColorValue" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,26 @@
 package com.example.android.bluetoothlegatt;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 
 /**
@@ -17,6 +33,11 @@ public class MotorController extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private HorizontalBarChart CurrentBarChart;
+    private Byte[]  Current = {125};
+    private Description description;
+    private String label = "Current";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -53,10 +74,40 @@ public class MotorController extends Fragment {
         }
     }
 
+    View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_motor_controller, container, false);
+        view = inflater.inflate(R.layout.fragment_motor_controller, container, false);
+
+        CurrentBarChart = (HorizontalBarChart) view.findViewById(R.id.current_bar_chart);
+        List<BarEntry> entries = new ArrayList<>();
+        entries.add(new BarEntry(0,12.5f));
+        entries.add(new BarEntry(1,11.6f));
+        entries.add(new BarEntry(2,15.7f));
+
+        ArrayList<String> labels = new ArrayList<>();
+        labels.add("Current");
+        labels.add("Avr. Current");
+        labels.add("Peak Current");
+
+        BarDataSet dataSet = new BarDataSet(entries,"Current");
+        BarData data = new BarData(dataSet);
+        data.setBarWidth(0.5f);
+        CurrentBarChart.setData(data);
+        CurrentBarChart.setFitBars(true);
+        CurrentBarChart.invalidate();
+
+
+
+//        description.setText("Current Consumption");
+        CurrentBarChart.setDescription(description);
+
+
+
+
+        return view;
     }
 }
