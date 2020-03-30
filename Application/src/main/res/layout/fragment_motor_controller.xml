@@ -113,7 +113,7 @@
                 android:id="@+id/motor_cylce_view"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
-                android:text="TextView"
+                android:text="565"
                 android:textAlignment="center"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -140,7 +140,7 @@
                 android:id="@+id/motor_work_view"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
-                android:text="TextView"
+                android:text="12"
                 android:textAlignment="center"
                 android:textSize="18dp"
                 android:textStyle="bold" />

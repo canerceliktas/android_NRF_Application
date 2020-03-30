@@ -32,7 +32,7 @@ public class ControllerTab extends AppCompatActivity {
 
     private TabLayout tabLayout_controller;
     private AppBarLayout appBarLayout;
-    private ViewPager viewPager_controller;
+    private LockableViewPager viewPager_controller;
 
     int mDefaultColor = 0;
     int color;
@@ -128,14 +128,14 @@ public class ControllerTab extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller_tab_layout);
         tabLayout_controller = (TabLayout) findViewById(R.id.tabLayout_controller);
-        viewPager_controller = (ViewPager) findViewById(R.id.viewPager_controller);
+        viewPager_controller = (LockableViewPager) findViewById(R.id.viewPager_controller);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.AddFragment(new RGBController(),"RGB");
         adapter.AddFragment(new MotorController(),"MOTOR");
         viewPager_controller.setAdapter(adapter);
         tabLayout_controller.setupWithViewPager(viewPager_controller);
-
+        viewPager_controller.setSwipeable(false);
 
 
         final Intent intent = getIntent();

@@ -14,10 +14,11 @@
         android:layout_gravity="fill"
         android:background="@color/colorPrimary"/>
 
-    <androidx.viewpager.widget.ViewPager
+    <com.example.android.bluetoothlegatt.LockableViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/viewPager_controller">
-    </androidx.viewpager.widget.ViewPager>
+        android:id="@+id/viewPager_controller"
+        />
+
 
 </LinearLayout>
