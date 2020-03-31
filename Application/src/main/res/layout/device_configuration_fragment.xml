@@ -216,7 +216,7 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="86dp"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="102dp"
             android:text="DCR :"
@@ -228,7 +228,7 @@
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="71dp"
+            android:layout_marginStart="72dp"
             android:text="L2CON :"
             app:layout_constraintBottom_toTopOf="@+id/textView15"
             app:layout_constraintStart_toStartOf="parent"
@@ -238,7 +238,7 @@
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="66dp"
+            android:layout_marginStart="68dp"
             android:text="M1CON :"
             app:layout_constraintBottom_toTopOf="@+id/textView16"
             app:layout_constraintStart_toStartOf="parent"
@@ -248,7 +248,7 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="65dp"
+            android:layout_marginStart="68dp"
             android:text="M2CON :"
             app:layout_constraintBottom_toTopOf="@+id/registerText"
             app:layout_constraintStart_toStartOf="parent"
@@ -258,7 +258,7 @@
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="71dp"
+            android:layout_marginStart="72dp"
             android:text="L1CON :"
             app:layout_constraintBottom_toTopOf="@+id/textView14"
             app:layout_constraintStart_toStartOf="parent"
@@ -268,7 +268,7 @@
             android:id="@+id/RegisterValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="52dp"
             android:layout_marginBottom="12dp"
             android:text="0"
             android:textStyle="bold"
@@ -301,6 +301,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/L1CON"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.486"
             app:layout_constraintStart_toEndOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="@+id/textView9" />
 
@@ -314,6 +315,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/L2CON"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toEndOf="@+id/textView17"
             app:layout_constraintTop_toBottomOf="@+id/DCR" />
 
@@ -327,6 +329,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/M1CON"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toEndOf="@+id/textView14"
             app:layout_constraintTop_toBottomOf="@+id/L1CON" />
 
@@ -340,6 +343,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/M2CON"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toEndOf="@+id/textView15"
             app:layout_constraintTop_toBottomOf="@+id/L2CON" />
 
@@ -353,6 +357,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/RegisterValue"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toEndOf="@+id/textView16"
             app:layout_constraintTop_toBottomOf="@+id/M1CON"
             app:layout_constraintVertical_bias="1.0" />

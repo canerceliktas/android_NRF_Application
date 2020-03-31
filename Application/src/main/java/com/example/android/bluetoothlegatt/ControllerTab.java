@@ -63,6 +63,10 @@ public class ControllerTab extends AppCompatActivity {
     private boolean isReconnect = false;
     private boolean mConnected = false;
 
+    static byte InstantCurrent = 2;
+    static byte AvarageCurrent = 3;
+    static byte PeakCurrent = 0x1E;
+
 
 
     private final ServiceConnection mServiseConnection = new ServiceConnection() {

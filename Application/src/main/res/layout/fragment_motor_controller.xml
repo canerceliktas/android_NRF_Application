@@ -4,16 +4,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#a3a3a3"
+    android:background="#81D4FA"
     >
 
+    <LinearLayout
+        android:id="@+id/motor_choose_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E0F2F1"
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:layout_marginEnd="@dimen/margin_16_dp"
+        android:layout_marginStart="@dimen/margin_16_dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:text="Choose Motor"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/motor_list"
+            android:layout_width="216dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
     <TableLayout
-        android:layout_width="332dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/motor_choose_layout"
-        app:layout_constraintStart_toStartOf="@+id/current_bar_chart"
-        app:layout_constraintTop_toBottomOf="@+id/current_bar_chart">
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:layout_marginEnd="@dimen/margin_16_dp"
+        android:layout_marginStart="@dimen/margin_16_dp"
+        android:background="#FFE0F2F1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motor_choose_layout">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:gravity="center"
+                android:text="Motor Cycle :"
+                android:textAlignment="center"
+                android:textSize="16dp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/motor_cylce_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="565"
+                android:textAlignment="center"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:gravity="center"
+                android:text="Motor Work :"
+                android:textAlignment="center"
+                android:textSize="16dp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/motor_work_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:textAlignment="center"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16_dp"
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:layout_marginEnd="@dimen/margin_16_dp"
+        android:background="#FFE0F2F1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
 
         <TableRow
             android:layout_width="wrap_content"
@@ -23,9 +125,10 @@
                 android:id="@+id/textView37"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
                 android:text="Motor Speed"
                 android:textAlignment="center"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <SeekBar
@@ -42,9 +145,10 @@
                 android:id="@+id/textView38"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
                 android:text="Motor Direction"
                 android:textAlignment="center"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <Switch
@@ -52,98 +156,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_16_dp"
-                android:text="Clockwise" />
-        </TableRow>
-
-    </TableLayout>
-
-    <LinearLayout
-        android:id="@+id/motor_choose_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16_dp"
-        android:layout_marginTop="@dimen/margin_16_dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="Choose Motor"
-            android:textAlignment="center"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/motor_list"
-            android:layout_width="240dp"
-            android:layout_height="50dp" />
-    </LinearLayout>
-
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16_dp"
-        android:layout_marginTop="@dimen/margin_16_dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/motor_choose_layout">
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@id/textView26"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-
-                android:gravity="center"
-                android:text="Motor Cycle :"
-                android:textAlignment="center"
-                android:textSize="18dp"
-                android:textStyle="bold"
-
-                />
-
-            <TextView
-                android:id="@+id/motor_cylce_view"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="565"
-                android:textAlignment="center"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textView25"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-
-                android:gravity="center"
-                android:text="Motor Work :"
-                android:textAlignment="center"
-                android:textSize="18dp"
-                android:textStyle="bold"
-
-                />
-
-            <TextView
-                android:id="@+id/motor_work_view"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="12"
-                android:textAlignment="center"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:text="Clockwise"
+                android:textSize="16dp"/>
         </TableRow>
 
     </TableLayout>
@@ -152,12 +166,11 @@
         android:id="@+id/current_bar_chart"
         android:layout_width="300dp"
         android:layout_height="150dp"
-        android:layout_marginTop="12dp"
-        android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/motor_choose_layout"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" >
+        android:background="#FFE0F2F1"
+        android:layout_marginTop="@dimen/margin_16_dp"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout2"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2">
 
     </com.github.mikephil.charting.charts.HorizontalBarChart>
 
