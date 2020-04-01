@@ -162,7 +162,7 @@
 
     </TableLayout>
 
-    <com.github.mikephil.charting.charts.HorizontalBarChart
+    <!--<com.github.mikephil.charting.charts.HorizontalBarChart
         android:id="@+id/current_bar_chart"
         android:layout_width="300dp"
         android:layout_height="150dp"
@@ -172,7 +172,7 @@
         app:layout_constraintStart_toStartOf="@+id/tableLayout2"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout2">
 
-    </com.github.mikephil.charting.charts.HorizontalBarChart>
+    </com.github.mikephil.charting.charts.HorizontalBarChart>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

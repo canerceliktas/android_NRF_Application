@@ -4,147 +4,387 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4E86CA"
+    android:background="#00A9DE"
     tools:context=".WelcomeScreenActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
-        android:layout_height="83dp"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/layout_bg"
-        app:layout_constraintBottom_toTopOf="@+id/Maintenance"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <LinearLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="267dp"
+            android:layout_height="74dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView29"
+            app:layout_constraintTop_toBottomOf="@+id/textView30"
+            app:layout_constraintVertical_bias="0.329">
+
+            <TextView
+                android:id="@+id/ConnectedDevice_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="monospace"
+                android:text="Connected Device :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/DeviceAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="monospace"
+                android:text="@string/label_device_address"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="Status :"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ConnectionStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="monospace"
+                    android:text="@string/disconnected"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView29"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:text="Status :"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/ConnectionStatus"
-            app:layout_constraintStart_toStartOf="@+id/ConnectedDevice_2"
-            app:layout_constraintTop_toTopOf="@+id/ConnectionStatus" />
-
-        <TextView
-            android:id="@+id/ConnectedDevice_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="4dp"
-            android:fontFamily="monospace"
-            android:text="Connected Device :"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="12sp"
+            android:layout_marginStart="@dimen/margin_16_dp"
+            android:layout_marginTop="32dp"
+            android:text="Welcome !"
+            android:textColor="#18DAE1"
+            android:textSize="64dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DeviceAddress" />
-
-        <TextView
-            android:id="@+id/DeviceAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="monospace"
-            android:text="@string/label_device_address"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/ConnectedDevice_2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/ConnectionStatus"
+            android:id="@+id/textView30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:fontFamily="monospace"
-            android:text="@string/disconnected"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/ConnectedDevice_2" />
+            android:text="You connected to the device below."
+            android:textColor="#45FF0E"
+            app:layout_constraintEnd_toEndOf="@+id/textView29"
+            app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_16_dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/Maintenance"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="@dimen/margin_16_dp"
+                android:layout_weight="1"
+                android:background="@drawable/maintenance_button_bg"
+                android:fontFamily="@font/abel"
+                android:text="Status"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/CustomDesign"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="@dimen/margin_16_dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_design_button_bg"
+                android:fontFamily="@font/abel"
+                android:text="Custom            Design"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/LoadCustomProgram"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="@dimen/margin_16_dp"
+                android:layout_weight="1"
+                android:background="@drawable/program_load_buton_bg"
+                android:fontFamily="@font/abel"
+                android:text="Program               Load"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_16_dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout8">
+
+            <Button
+                android:id="@+id/ProgramSelect"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="@dimen/margin_16_dp"
+                android:layout_weight="1"
+                android:background="@drawable/program_select_button_bg"
+                android:fontFamily="@font/abel"
+                android:text="Prepared        Programs"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/ColorPicker"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="@dimen/margin_16_dp"
+                android:layout_weight="1"
+                android:background="@drawable/controller_button_bg"
+                android:fontFamily="@font/abel"
+                android:text="Controller"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/Devices"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="@dimen/margin_16_dp"
+                android:layout_weight="1"
+                android:background="@drawable/devices_button_bg"
+                android:fontFamily="@font/abel"
+                android:text="Devices"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ConnectButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="@dimen/margin_16_dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/connect_button_bg"
+            android:src="@drawable/connect_png"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/margin_16_dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
+            android:id="@+id/DisconnectButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="@dimen/margin_16_dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/connect_button_bg"
+            android:padding="@dimen/margin_16_dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/disconnect_png"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintVertical_bias="1.0" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="0dp"
+            android:layout_height="83dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/layout_bg"
+            app:layout_constraintBottom_toTopOf="@+id/Maintenance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/Maintenance"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_buttons"
-        android:text="Maıntance"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="Status :"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ConnectionStatus"
+                app:layout_constraintStart_toStartOf="@+id/ConnectedDevice_2"
+                app:layout_constraintTop_toTopOf="@+id/ConnectionStatus" />
 
-    <Button
-        android:id="@+id/CustomDesign"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_buttons"
-        android:text="Custom   Design"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="@+id/ProgramSelect"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ProgramSelect"
-        app:layout_constraintTop_toBottomOf="@+id/ProgramSelect" />
+            <TextView
+                android:id="@+id/ConnectedDevice_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="monospace"
+                android:text="Connected Device :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DeviceAddress" />
 
-    <Button
-        android:id="@+id/ProgramSelect"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_buttons"
-        android:text="Program Select"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="@+id/Maintenance"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/Maintenance"
-        app:layout_constraintTop_toBottomOf="@+id/Maintenance" />
+            <TextView
+                android:id="@+id/DeviceAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="monospace"
+                android:text="@string/label_device_address"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/ConnectedDevice_2"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/LoadCustomProgram"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_buttons"
-        android:text="Program Load"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="@+id/CustomDesign"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/CustomDesign"
-        app:layout_constraintTop_toBottomOf="@+id/CustomDesign" />
+            <TextView
+                android:id="@+id/ConnectionStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="monospace"
+                android:text="@string/disconnected"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/ConnectedDevice_2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/ColorPicker"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_buttons"
-        android:text="Controller"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/LoadCustomProgram"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@id/LoadCustomProgram"
-        app:layout_constraintStart_toStartOf="@+id/LoadCustomProgram"
-        app:layout_constraintTop_toBottomOf="@+id/LoadCustomProgram"
-        app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/Maintenance"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_buttons"
+            android:text="Maıntance"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
+        <Button
+            android:id="@+id/CustomDesign"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_buttons"
+            android:text="Custom   Design"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="@+id/ProgramSelect"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/ProgramSelect"
+            app:layout_constraintTop_toBottomOf="@+id/ProgramSelect" />
+
+        <Button
+            android:id="@+id/ProgramSelect"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_buttons"
+            android:text="Program Select"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="@+id/Maintenance"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/Maintenance"
+            app:layout_constraintTop_toBottomOf="@+id/Maintenance" />
+
+        <Button
+            android:id="@+id/LoadCustomProgram"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_buttons"
+            android:text="Program Load"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="@+id/CustomDesign"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/CustomDesign"
+            app:layout_constraintTop_toBottomOf="@+id/CustomDesign" />
+
+        <Button
+            android:id="@+id/ColorPicker"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/custom_buttons"
+            android:text="Controller"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/LoadCustomProgram"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/LoadCustomProgram"
+            app:layout_constraintStart_toStartOf="@+id/LoadCustomProgram"
+            app:layout_constraintTop_toBottomOf="@+id/LoadCustomProgram"
+            app:layout_constraintVertical_bias="0.0" />
+    -->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,6 +51,12 @@ public class MotorController extends Fragment {
     private String label = "Current";
     float I1,I2,I3;
 
+    ArrayList<BarEntry> InstCurrent = new ArrayList<>();    //Veriyi tutan array listler, 3 akım 3 arraylist
+    ArrayList<BarEntry> AvrgCurrent = new ArrayList<>();
+    ArrayList<BarEntry> PkCurrent = new ArrayList<>();
+
+    BarDataSet set1,set2,set3;
+
     private Switch clockwise;
     Timer timer = new Timer();
 
@@ -99,10 +105,10 @@ public class MotorController extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_motor_controller, container, false);
 
-        CurrentBarChart = (HorizontalBarChart) view.findViewById(R.id.current_bar_chart);
-        description = CurrentBarChart.getDescription();
-        description.setText("Current (A)");
-        CurrentBarChart.setDescription(description);
+//        CurrentBarChart = (HorizontalBarChart) view.findViewById(R.id.current_bar_chart);
+//        description = CurrentBarChart.getDescription();
+//        description.setText("Current (A)");
+//        CurrentBarChart.setDescription(description);
 
         clockwise = (Switch) view.findViewById(R.id.switch1);
         clockwise.setTextColor(Color.RED);
@@ -123,76 +129,81 @@ public class MotorController extends Fragment {
         I2 = AvarageCurrent;
         I3 = PeakCurrent;
 
-        setGraphData(I3,I2,I1);
+//        setGraphData(I3,I2,I1);
 
-        //Set the schedule function
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                I3=I3+0.5f;
-                I2=I2+0.3f;
-                I1=I1+0.7f;
-
+//        //Set the schedule function
+//        timer.scheduleAtFixedRate(new TimerTask() {
+//            @Override
+//            public void run() {
+//                I3=I3+0.5f;
+//                I2=I2+0.3f;
+//                I1=I1+0.7f;
+//
 //                setGraphData(I3,I2,I1);
-            }
-        },500,2000);
+//            }
+//        },500,2000);
 
         return view;
     }
 
 
-    private void setGraphData(float PeakCurrent, float AvarageCurrent, float InstantCurrent) {
-
-        YAxis rightAxis = CurrentBarChart.getAxisRight();       //grafiğin alttaki y ekseni
-        XAxis xAxis = CurrentBarChart.getXAxis();               //grafiğin x ekseni
-        CurrentBarChart.setTouchEnabled(false);                 //Interaction ı engellemek için dokunma devredışı
-
-        ArrayList<BarEntry> InstCurrent = new ArrayList<>();    //Veriyi tutan array listler, 3 akım 3 arraylist
-        ArrayList<BarEntry> AvrgCurrent = new ArrayList<>();
-        ArrayList<BarEntry> PkCurrent = new ArrayList<>();
-
-        InstCurrent.add(new BarEntry(0,InstantCurrent));
-        AvrgCurrent.add(new BarEntry(0,AvarageCurrent));
-        PkCurrent.add(new BarEntry(0,PeakCurrent));
-
-        BarDataSet set1 = new BarDataSet(InstCurrent,"Instant Current");    //Data Set e veriyi ekle
-        set1.setColor(Color.BLUE);
-        BarDataSet set2 = new BarDataSet(AvrgCurrent,"Avarage Current");
-        set2.setColor(Color.GREEN);
-        BarDataSet set3 = new BarDataSet(PkCurrent,"Peak Current");
-        set3.setColor(Color.RED);
-
-        float groupSpace = 0.05f;
-        float barSpace = 0.015f;
-        float barWidth = 0.045f;
-
-        BarData data = new BarData(set1,set2,set3);
-        data.setBarWidth(barWidth);
-        CurrentBarChart.setData(data);
-        CurrentBarChart.groupBars(0,groupSpace,barSpace);
-
-        CurrentBarChart.setVisibleXRange(0f,1f);
-        CurrentBarChart.setVisibleYRange(0f,50f, YAxis.AxisDependency.LEFT);
-
-        xAxis.setDrawAxisLine(false);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setEnabled(false);
-        xAxis.setDrawGridLines(false);
-        xAxis.setLabelCount(1);
-        xAxis.setAxisMinimum(0f);
-        xAxis.setAxisMaximum(0.2f);
-        rightAxis.setEnabled(false);
-
-        CurrentBarChart.invalidate();
-    }
-
-    private void changeGraphData(float PeakCurrent, float AvarageCurrent, float InstantCurrent){
-
-    }
+//    private void setGraphData(float PeakCurrent, float AvarageCurrent, float InstantCurrent) {
+//
+//        YAxis rightAxis = CurrentBarChart.getAxisRight();       //grafiğin alttaki y ekseni
+//        XAxis xAxis = CurrentBarChart.getXAxis();               //grafiğin x ekseni
+//        CurrentBarChart.setTouchEnabled(false);                 //Interaction ı engellemek için dokunma devredışı
+//
+////        ArrayList<BarEntry> InstCurrent = new ArrayList<>();    //Veriyi tutan array listler, 3 akım 3 arraylist
+////        ArrayList<BarEntry> AvrgCurrent = new ArrayList<>();
+////        ArrayList<BarEntry> PkCurrent = new ArrayList<>();
+//
+//        InstCurrent.add(new BarEntry(0,InstantCurrent));
+//        AvrgCurrent.add(new BarEntry(0,AvarageCurrent));
+//        PkCurrent.add(new BarEntry(0,PeakCurrent));
+//
+//        set1 = new BarDataSet(InstCurrent,"Instant Current");    //Data Set e veriyi ekle
+//        set1.setColor(Color.BLUE);
+//        set2 = new BarDataSet(AvrgCurrent,"Avarage Current");
+//        set2.setColor(Color.GREEN);
+//        set3 = new BarDataSet(PkCurrent,"Peak Current");
+//        set3.setColor(Color.RED);
+//
+//        float groupSpace = 0.05f;
+//        float barSpace = 0.015f;
+//        float barWidth = 0.045f;
+//
+//        BarData data = new BarData(set1,set2,set3);
+//        data.setBarWidth(barWidth);
+//        CurrentBarChart.setData(data);
+//        CurrentBarChart.groupBars(0,groupSpace,barSpace);
+//
+//        CurrentBarChart.setVisibleXRange(0f,1f);
+//        CurrentBarChart.setVisibleYRange(0f,50f, YAxis.AxisDependency.LEFT);
+//
+//        xAxis.setDrawAxisLine(false);
+//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+//        xAxis.setEnabled(false);
+//        xAxis.setDrawGridLines(false);
+//        xAxis.setLabelCount(1);
+//        xAxis.setAxisMinimum(0f);
+//        xAxis.setAxisMaximum(0.2f);
+//        rightAxis.setEnabled(false);
+//
+//        CurrentBarChart.invalidate();
+//    }
+//
+//    private void changeGraphData(float PeakCurrent, float AvarageCurrent, float InstantCurrent){
+//
+//        InstCurrent.add(new BarEntry(0,InstantCurrent));
+//        AvrgCurrent.add(new BarEntry(0,AvarageCurrent));
+//        PkCurrent.add(new BarEntry(0,PeakCurrent));
+//
+//
+//    }
 
     @Override
     public void onDestroyView() {
-        timer.cancel();
+
         super.onDestroyView();
     }
 }

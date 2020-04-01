@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -45,6 +47,7 @@ public class WelcomeScreenActivity extends Activity {
     Button mProgramLoad;
     Button mMaintance;
     Button mColorPicker;
+    ImageButton mConnect, mDisconnect;
     Button mExit;
     private String mDeviceName;
     private String mDeviceAddress;
@@ -138,12 +141,14 @@ public class WelcomeScreenActivity extends Activity {
 
         scanDialog = new ProgressDialog(this);
 
-
         mConnectedDevice = (TextView) findViewById(R.id.ConnectedDevice_2);
         mDeviceAdress = (TextView) findViewById(R.id.DeviceAddress);
         mStatus = (TextView) findViewById(R.id.ConnectionStatus);
 
         mCustomDesign = (Button) findViewById(R.id.CustomDesign);
+        mConnect = (ImageButton) findViewById(R.id.ConnectButton);
+        mDisconnect = (ImageButton) findViewById(R.id.DisconnectButton);
+
         mProgramSelect = (Button) findViewById(R.id.ProgramSelect);
         mMaintance = (Button) findViewById(R.id.Maintenance);
         mProgramLoad = (Button) findViewById(R.id.LoadCustomProgram);
@@ -163,6 +168,14 @@ public class WelcomeScreenActivity extends Activity {
         mConnectedDevice.setText("Connected Device : " + mDeviceName);
         mDeviceAdress.setText("Device Address : " + mDeviceAddress);
 
+
+//        if (mConnected){
+//            mConnect.setVisibility(View.INVISIBLE);
+//            mDisconnect.setVisibility(View.VISIBLE);
+//        } else {
+//            mConnect.setVisibility(View.VISIBLE);
+//            mDisconnect.setVisibility(View.INVISIBLE);
+//        }
 
         mMaintance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,6 +226,25 @@ public class WelcomeScreenActivity extends Activity {
                 startActivity(intent_3);
             }
         });
+
+        mConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBluetoothLeService.connect(mDeviceAddress);
+                scanDialog.setTitle(""+ mDeviceName + " cihazına bağlanıyor.");
+                scanDialog.setMessage("Lütfen bekleyin...");
+                scanDialog.setCanceledOnTouchOutside(false);
+                scanDialog.show();
+            }
+        });
+
+        mDisconnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBluetoothLeService.disconnect();
+            }
+        });
+
 
 
 
@@ -302,8 +334,13 @@ public class WelcomeScreenActivity extends Activity {
                 if (mConnected){
                     mStatus.setTextColor(0xFF00FF00);
                     scanDialog.dismiss();
+                    mDisconnect.setVisibility(View.VISIBLE);
+                    mConnect.setVisibility(View.INVISIBLE);
                 }
                 else{
+                    mConnect.setVisibility(View.VISIBLE);
+                    mDisconnect.setVisibility(View.INVISIBLE);
+
                     mStatus.setTextColor(0xFFFF0000);
                 }
 
