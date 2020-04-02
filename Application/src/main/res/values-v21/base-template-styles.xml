@@ -18,8 +18,6 @@
 <resources>
 
     <!-- Activity themes -->
-    <style name="Theme.Base" parent="android:Theme.Material.Light">
-    </style>
 
     <style name="AppTheme.FullScreen" parent="@style/Theme.AppCompat.Light">
         <item name="windowNoTitle">true</item>
