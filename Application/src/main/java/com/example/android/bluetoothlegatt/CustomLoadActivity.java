@@ -37,6 +37,7 @@ public class CustomLoadActivity extends Activity {
     private TextView mConnectedDevice;
     private TextView mConnectionState;
     public String[] savedFiles;
+    CfgListviewAdapter cfgListviewAdapter;
 
     private String mDeviceName;
     private String mDeviceAddress;
@@ -139,9 +140,12 @@ public class CustomLoadActivity extends Activity {
 
         savedFiles = getApplicationContext().fileList(); //kayıtlı dosyaları al
 
-        savedFilesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, savedFiles);
+//        savedFilesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, savedFiles);
 
-        mSavedCFGListView.setAdapter(savedFilesAdapter);
+        cfgListviewAdapter = new CfgListviewAdapter(this,savedFiles);
+
+//        mSavedCFGListView.setAdapter(savedFilesAdapter);
+        mSavedCFGListView.setAdapter(cfgListviewAdapter);
         mSavedCFGListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         //mSavedCFGListView.setSelector(R.drawable.state_selector);
 
@@ -181,42 +185,46 @@ public class CustomLoadActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String data = load(saveId);
-                String index_0 = data.substring(1,data.indexOf("]"));
-                String[] index_1 = index_0.split(", ");
-                byte datatoSendbyte[];
-                int datatoSend[] = new int[5];
-                int mDCR = Integer.parseInt(index_1[0]);
-                int mL1CON = Integer.parseInt(index_1[1]);
-                int mL2CON = Integer.parseInt(index_1[2]);
-                int mM1CON = Integer.parseInt(index_1[3]);
-                int mM2CON = Integer.parseInt(index_1[4]);
+                if(data == null)
+                    return;
+                else {
+                    String index_0 = data.substring(1, data.indexOf("]"));
+                    String[] index_1 = index_0.split(", ");
+                    byte datatoSendbyte[];
+                    int datatoSend[] = new int[5];
+                    int mDCR = Integer.parseInt(index_1[0]);
+                    int mL1CON = Integer.parseInt(index_1[1]);
+                    int mL2CON = Integer.parseInt(index_1[2]);
+                    int mM1CON = Integer.parseInt(index_1[3]);
+                    int mM2CON = Integer.parseInt(index_1[4]);
 
 
-                byte[] dataDCR = longToBytes(mDCR);
+                    byte[] dataDCR = longToBytes(mDCR);
 //                byte[] dataL1CON = longToBytes(mL1CON);
 //                byte[] dataL2CON = longToBytes(mL2CON);
 //                byte[] dataM1CON = longToBytes(mM1CON);
 //                byte[] dataM2CON = longToBytes(mM2CON);
 
-                datatoSend[0] =  mDCR;
-                datatoSend[1] =  mL1CON;
-                datatoSend[2] =  mL2CON;
-                datatoSend[3] =  mM1CON;
-                datatoSend[4] =  mM2CON;
-                datatoSendbyte = int2byte(datatoSend);
-                mDCR = mDCR;
+                    datatoSend[0] = mDCR;
+                    datatoSend[1] = mL1CON;
+                    datatoSend[2] = mL2CON;
+                    datatoSend[3] = mM1CON;
+                    datatoSend[4] = mM2CON;
+                    datatoSendbyte = int2byte(datatoSend);
+                    mDCR = mDCR;
 
-                try {
-                    //karakteristiğe yazma kısmı buraya alındı. (debug modda çalılıyordu release de çalışmıyıordu)
+                    try {
+                        //karakteristiğe yazma kısmı buraya alındı. (debug modda çalılıyordu release de çalışmıyıordu)
 
-                    BluetoothGattCharacteristic characteristic = mGattCharacteristics.get(2).get(0);
+                        BluetoothGattCharacteristic characteristic = mGattCharacteristics.get(2).get(0);
 
-                    characteristic.setValue(datatoSendbyte);
-                    mBluetoothLeService.writeCharacteristic(characteristic);
+                        characteristic.setValue(datatoSendbyte);
+                        mBluetoothLeService.writeCharacteristic(characteristic);
 
 
-                } catch (IndexOutOfBoundsException e) {
-                    Toast.makeText(CustomLoadActivity.this, "Index Hatası !", Toast.LENGTH_LONG).show();
+                    } catch (IndexOutOfBoundsException e) {
+                        Toast.makeText(CustomLoadActivity.this, "Index Hatası !", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -317,29 +325,42 @@ public class CustomLoadActivity extends Activity {
     private void reloadAllData(){
         savedFiles = getApplicationContext().fileList(); //kayıtlı dosyaları al
 
-        savedFilesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, savedFiles);
+        //        savedFilesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, savedFiles);
 
-        mSavedCFGListView.setAdapter(savedFilesAdapter);
+        cfgListviewAdapter = new CfgListviewAdapter(this,savedFiles);
+
+//        mSavedCFGListView.setAdapter(savedFilesAdapter);
+        mSavedCFGListView.setAdapter(cfgListviewAdapter);
         mSavedCFGListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+//        savedFilesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, savedFiles);
+//
+//        mSavedCFGListView.setAdapter(savedFilesAdapter);
+//        mSavedCFGListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
     }
 
     private String load(String file_name) {
         String temp = null;
-        try {
-            FileInputStream fis = openFileInput(file_name); //file ı aç
-            temp="";
-            int i;
-            while((i=fis.read())!= -1) {
-                temp = temp + Character.toString((char)i); //file da bulunan datayı temp stringine at
-            }
-            //registerValue = Integer.parseInt(sbuffer.toString());
-            fis.close();
+        if (file_name == null)
+        {
+            Toast.makeText(getApplicationContext(),"Please select a configuration", Toast.LENGTH_LONG).show();
+        } else {
+            try {
+                FileInputStream fis = openFileInput(file_name); //file ı aç
+                temp = "";
+                int i;
+                while ((i = fis.read()) != -1) {
+                    temp = temp + Character.toString((char) i); //file da bulunan datayı temp stringine at
+                }
+                //registerValue = Integer.parseInt(sbuffer.toString());
+                fis.close();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return temp;
     }

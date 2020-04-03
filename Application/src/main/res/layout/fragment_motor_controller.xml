@@ -164,7 +164,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/textView34"
+                android:id="@+id/instant-current"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -204,7 +204,7 @@
             app:layout_constraintTop_toTopOf="parent" >
 
             <TextView
-                android:id="@+id/textView35"
+                android:id="@+id/avarage-current"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -246,7 +246,7 @@
             app:layout_constraintTop_toTopOf="parent" >
 
             <TextView
-                android:id="@+id/textView39"
+                android:id="@+id/peak-current"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -287,8 +287,8 @@
 
         <Spinner
             android:id="@+id/motor_list"
-            android:layout_width="145dp"
-            android:layout_height="47dp"
+            android:layout_width="164dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

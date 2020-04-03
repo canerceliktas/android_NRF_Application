@@ -4,65 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4E86CA"
+    android:background="@drawable/customload"
     tools:context=".CustomLoadActivity">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="340dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/layout_bg"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/loadButton_2"
+    <ListView
+        android:id="@+id/savedCfgListView"
+        android:layout_width="323dp"
+        android:layout_height="282dp"
+        android:choiceMode="singleChoice"
+        android:dividerHeight="@dimen/margin_16_dp"
+        android:listSelector="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="0.243" />
 
-        <ListView
-            android:id="@+id/savedCfgListView"
-            android:layout_width="323dp"
-            android:layout_height="282dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:listSelector="@android:color/darker_gray"
-            android:choiceMode="singleChoice"
-            />
-
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/layout_bg"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        android:layout_width="286dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="36dp"
+
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.604"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView4"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="8dp"
-            android:text="Status :"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ConnectedDevice_2" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="2dp"
+                android:text="Status :"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ConnectedDevice_2" />
+
+            <TextView
+                android:id="@+id/ConnectedStatus"
+                android:layout_width="115dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="164dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/ConnectedDevice_2" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/ConnectedDevice_2"
@@ -81,47 +83,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/ConnectedStatus"
-            android:layout_width="115dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="164dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/ConnectedDevice_2" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/loadButton_2"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="83dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="58dp"
-        android:background="@drawable/custom_buttons"
+
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/config_load_button_selector"
         android:text="LOAD"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/deleteButton"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/savedCfgListView"
+        app:layout_constraintTop_toBottomOf="@+id/savedCfgListView" />
 
     <Button
         android:id="@+id/deleteButton"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/custom_buttons"
+
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:background="@drawable/opac_button_selector"
+        android:fontFamily="@font/abel"
         android:text="@string/delete"
+        android:textColor="#F3E5F5"
         app:layout_constraintBottom_toBottomOf="@+id/loadButton_2"
-        app:layout_constraintEnd_toStartOf="@+id/loadButton_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/loadButton_2" />
+        app:layout_constraintStart_toStartOf="@+id/savedCfgListView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

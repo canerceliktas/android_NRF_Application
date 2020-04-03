@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background"
+        android:background="@drawable/welcomescreen1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -31,7 +31,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView29"
             app:layout_constraintTop_toBottomOf="@+id/textView30"
-            app:layout_constraintVertical_bias="0.329">
+            app:layout_constraintVertical_bias="0.35">
 
             <TextView
                 android:id="@+id/ConnectedDevice_2"
@@ -89,11 +89,11 @@
             android:id="@+id/textView29"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16_dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
             android:text="Welcome !"
             android:textColor="#18DAE1"
-            android:textSize="64dp"
+            android:textSize="56dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -102,7 +102,7 @@
             android:id="@+id/textView30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You connected to the device below."
+            android:text="Configure your device efficiently !"
             android:textColor="#45FF0E"
             app:layout_constraintEnd_toEndOf="@+id/textView29"
             app:layout_constraintTop_toBottomOf="@+id/textView29" />
@@ -111,7 +111,7 @@
             android:id="@+id/linearLayout8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_16_dp"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
             app:layout_constraintStart_toStartOf="parent">
@@ -214,12 +214,12 @@
             android:id="@+id/ConnectButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="@dimen/margin_16_dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/connect_button_selector"
-            android:src="@drawable/connect_png"
-            android:scaleType="fitCenter"
             android:padding="@dimen/margin_16_dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/connect_png"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -231,8 +231,8 @@
             android:id="@+id/DisconnectButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="@dimen/margin_16_dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/connect_button_selector"
             android:padding="@dimen/margin_16_dp"
             android:scaleType="fitCenter"

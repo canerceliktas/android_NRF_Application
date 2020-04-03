@@ -30,7 +30,8 @@
             android:theme="@style/AppTheme.FullScreen" />
 
 
-        <activity android:name=".CustomLoadActivity" />
+        <activity android:name=".CustomLoadActivity"
+            android:theme="@style/AppTheme.FullScreen"></activity>
         <activity android:name=".WelcomeScreenActivity"
             android:theme="@style/AppTheme.FullScreen"/>
         <activity
