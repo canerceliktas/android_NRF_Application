@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#4E86CA"
+    android:background="@drawable/custombackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -191,8 +191,8 @@
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="131dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/layout_bg"
         app:layout_constraintBottom_toBottomOf="parent"

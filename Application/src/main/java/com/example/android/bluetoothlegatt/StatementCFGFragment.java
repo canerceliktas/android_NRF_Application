@@ -44,7 +44,7 @@ public class StatementCFGFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.statement_cfg_fragment, container, false);
+        view = inflater.inflate(R.layout.fragment_statement_configuration, container, false);
 
         //UI Sets
 

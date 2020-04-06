@@ -28,7 +28,9 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.renderscript.Sampler;
 import android.util.Log;
+import android.util.Range;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +40,8 @@ import android.widget.ImageView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.ekn.gruzer.gaugelibrary.ArcGauge;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,6 +57,9 @@ import static android.view.View.INVISIBLE;
  * Bluetooth LE API.
  */
 public class DeviceControlActivity extends Activity {
+
+    ArcGauge mTRMvalue, mSensorValue;
+
 
 
     private final static String TAG = DeviceControlActivity.class.getSimpleName();
@@ -180,28 +187,38 @@ public class DeviceControlActivity extends Activity {
 
         // Sets up UI references.
         mConnectionState = (TextView) findViewById(R.id.connection_state);
-        mTransmitterError = (TextView) findViewById(R.id.mTransmitterError);
-        mSensorData = (TextView) findViewById(R.id.mSensorData);
+//        mTransmitterError = (TextView) findViewById(R.id.mTransmitterError);
+//        mSensorData = (TextView) findViewById(R.id.mSensorData);
 
-        sensorImage = (ImageView) findViewById(R.id.SensorView);
+        //sensorImage = (ImageView) findViewById(R.id.SensorView);
 
 
-        motorStopView = (ImageView)findViewById(R.id.motorStopView);
-        motorStatus = (TextView) findViewById(R.id.mMotorStatus);
+       // motorStopView = (ImageView)findViewById(R.id.motorStopView);
+        motorStatus = (TextView) findViewById(R.id.mMotorStatus1);
 
-        mCell1 = (ImageView) findViewById(R.id.imageView4);
-        mCell2 = (ImageView) findViewById(R.id.CELL2);
+//        mCell1 = (ImageView) findViewById(R.id.imageView4);
+//        mCell2 = (ImageView) findViewById(R.id.CELL2);
 
-        motorStopView.setImageResource(R.drawable.motor_stop);
-        sensorImage.setVisibility(INVISIBLE);
+      //  motorStopView.setImageResource(R.drawable.motor_stop);
+       // sensorImage.setVisibility(INVISIBLE);
         motorStatus.setTextColor(0xFFFF0000);
         motorStatus.setText("Motor has stopped!");
 
 
 
+        mSensorValue = findViewById(R.id.sensor_data);
+        mSensorValue.setMaxValue(1000);
+        mSensorValue.setMinValue(300);
+        mTRMvalue = findViewById(R.id.trm_data);
+        mTRMvalue.setMaxValue(1200);
+        mTRMvalue.setMinValue(700);
 
-        getActionBar().setTitle(mDeviceName);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+
+//        getActionBar().setTitle(mDeviceName);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
 
@@ -281,16 +298,18 @@ public class DeviceControlActivity extends Activity {
         if (data != null && characteristic != null) {
            // data = data.substring(data.indexOf('\n')+1).trim();
             if (characteristic.equals( "aee4beeb-91d2-11e9-bc42-52a6f7764f64") ){
-                mTransmitterError.setText(data);
+//                mTransmitterError.setText(data);
+                mTRMvalue.setValue(Double.parseDouble(data));
             }
             else if (characteristic.equals("aee4beea-91d2-11e9-bc42-52a6f7764f64")){ // veriler karışmasın
-                mSensorData.setText(data);
+//                mSensorData.setText(data);
+                mSensorValue.setValue(Double.parseDouble(data));
                SensorData = Integer.parseInt(data);
                 if(SensorData<=729 && SensorData !=0)
                 {
 
-                    motorStopView.setImageResource(R.drawable.motor_stop);
-                    sensorImage.setVisibility(INVISIBLE);
+                  //  motorStopView.setImageResource(R.drawable.motor_stop);
+                 //   sensorImage.setVisibility(INVISIBLE);
                     motorStatus.setTextColor(0xFFFF0000);
                     motorStatus.setText("Motor has stopped!");
                     stopflag=true;
@@ -300,7 +319,7 @@ public class DeviceControlActivity extends Activity {
                 else {
 
 
-                    sensorImage.setVisibility(View.VISIBLE);
+                //    sensorImage.setVisibility(View.VISIBLE);
                     motorStatus.setTextColor(0xFF00FF00);
                     motorStatus.setText("Motor is running!");
                     stopflag=false;

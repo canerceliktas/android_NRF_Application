@@ -33,6 +33,7 @@ dependencies {
     implementation 'com.github.skydoves:colorpickerpreference:1.0.2'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0' //graphic chart
+    implementation 'com.ekn.gruzer.gaugelibrary:gaugelibrary:0.2.1'
 }
 
 // The sample build uses multiple directories to
@@ -48,7 +49,7 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        minSdkVersion 18
+        minSdkVersion 21
         targetSdkVersion 28
     }
 

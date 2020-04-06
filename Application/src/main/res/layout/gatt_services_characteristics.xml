@@ -19,7 +19,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="0dp"
-    android:background="#4E86CA"
+    android:background="@drawable/custombackground"
     android:orientation="vertical">
 
     <LinearLayout
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_margin="12dp"
-        android:background="@drawable/layout_bg"
+        android:background="@drawable/motor_controller_backgorund"
         android:orientation="horizontal">
 
         <TextView
@@ -36,6 +36,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginTop="3dp"
             android:text="@string/label_state"
+            android:textStyle="bold"
             android:textSize="18sp" />
 
 
@@ -50,14 +51,15 @@
     </LinearLayout>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="68dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/layout_bg"
+        android:background="@drawable/motor_controller_backgorund"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="374dp">
@@ -66,10 +68,10 @@
             android:id="@+id/textView31"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginBottom="11dp"
+            android:layout_marginStart="@dimen/margin_16_dp"
+            android:layout_marginTop="4dp"
             android:text="Device Version : "
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/textView32"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -78,391 +80,705 @@
             android:id="@+id/textView32"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginBottom="18dp"
             android:text="Device Revision :"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="@dimen/margin_16_dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView31" />
-
+<!--
         <TextView
             android:id="@+id/textView33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="47dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="19dp"
             android:text="Alarm Status :"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            tools:layout_editor_absoluteX="249dp"
+            tools:layout_editor_absoluteY="31dp" />
+            -->
+    </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="195dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/layout_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_16_dp"
+    android:layout_marginBottom="2dp">
 
-        <!--
-        <Button
-            android:id="@+id/send_button"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/custom_button_send"
-            android:text="Send"
-            android:textAlignment="gravity"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        -->
+    <TextView
+        android:id="@+id/mMotorStatus1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Motor has stopped!"
+        android:textColor="#FF0000"
+        android:textSize="16dp" />
 
-        <!--
-        <TextView
-            android:id="@+id/chooseDelay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:text="Delay(seconds) :"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        -->
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Receiver 2 Status :"
-            app:layout_constraintBottom_toTopOf="@+id/textView7"
-            app:layout_constraintEnd_toStartOf="@+id/RX2Status"
-            app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+</LinearLayout>
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Transmitter 2 Status :"
-            app:layout_constraintBottom_toTopOf="@+id/textView8"
-            app:layout_constraintEnd_toStartOf="@+id/TX2Status"
-            app:layout_constraintStart_toStartOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Transmitter 1 Status :"
-            app:layout_constraintBottom_toTopOf="@+id/textView6"
-            app:layout_constraintEnd_toStartOf="@+id/TX1Status"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-        <ImageView
-            android:id="@+id/CELL2"
-            android:layout_width="56dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textView24"
-            app:layout_constraintStart_toStartOf="@+id/textView24"
-            app:layout_constraintTop_toBottomOf="@+id/textView24"
-            app:layout_constraintVertical_bias="0.2"
-            app:srcCompat="@drawable/con_status" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="56dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView24"
-            app:layout_constraintEnd_toEndOf="@+id/textView23"
-            app:layout_constraintStart_toStartOf="@+id/textView23"
-            app:layout_constraintTop_toBottomOf="@+id/textView23"
-            app:srcCompat="@drawable/con_status" />
-
-        <TextView
-            android:id="@+id/mMotorStatus"
-            android:layout_width="145dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:text="Motor has stopped!"
-            android:textColor="#FF0000"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="Receiver 1 Status :"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
-            app:layout_constraintEnd_toStartOf="@+id/RX1Status"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="PEDAL 1 Status :"
-            app:layout_constraintBottom_toTopOf="@+id/textView22"
-            app:layout_constraintEnd_toStartOf="@+id/Pedal1Status"
-            app:layout_constraintStart_toStartOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="PEDAL 2 Status :"
-            app:layout_constraintBottom_toTopOf="@+id/mMotorStatus"
-            app:layout_constraintStart_toStartOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="73dp"
-            android:layout_marginBottom="5dp"
-            android:text="CELL1PRC"
-            app:layout_constraintBottom_toTopOf="@+id/imageView4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/RX1Status"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="2dp"
-            android:text="CELL2PRC"
-            app:layout_constraintBottom_toTopOf="@+id/CELL2"
-            app:layout_constraintEnd_toEndOf="@+id/textView23"
-            app:layout_constraintStart_toStartOf="@+id/textView23"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-        <TextView
-            android:id="@+id/RX1Status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="5dp"
-            android:text="Obstacle"
-            android:textColor="#FF0000"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/TX1Status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Error"
-            android:textColor="#FF0000"
-            app:layout_constraintBottom_toTopOf="@+id/RX2Status"
-            app:layout_constraintEnd_toEndOf="@+id/RX1Status"
-            app:layout_constraintStart_toEndOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/RX1Status" />
-
-        <TextView
-            android:id="@+id/RX2Status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Obstacle"
-            android:textColor="#FF0000"
-            app:layout_constraintBottom_toTopOf="@+id/textView7"
-            app:layout_constraintEnd_toEndOf="@+id/TX1Status"
-            app:layout_constraintStart_toEndOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-        <TextView
-            android:id="@+id/TX2Status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Error"
-            android:textColor="#FF0000"
-            app:layout_constraintBottom_toTopOf="@+id/Pedal1Status"
-            app:layout_constraintEnd_toEndOf="@+id/RX2Status"
-            app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/RX2Status" />
-
-        <TextView
-            android:id="@+id/Pedal1Status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="5dp"
-            android:text="Not Pressed"
-            android:textColor="#FF0000"
-            app:layout_constraintBottom_toTopOf="@+id/Pedal2Status"
-            app:layout_constraintEnd_toEndOf="@+id/TX2Status"
-            app:layout_constraintStart_toEndOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-        <TextView
-            android:id="@+id/Pedal2Status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:text="Not Pressed"
-            android:textColor="#FF0000"
-            app:layout_constraintBottom_toTopOf="@+id/mMotorStatus"
-            app:layout_constraintEnd_toEndOf="@+id/Pedal1Status"
-            app:layout_constraintStart_toEndOf="@+id/textView22"
-            app:layout_constraintTop_toBottomOf="@+id/Pedal1Status" />
-
-        <!--
-        <Spinner
-            android:id="@+id/delay_spinner"
-            android:layout_width="124dp"
-            android:layout_height="36dp"
-            android:layout_marginBottom="87dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/send_button"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/chooseDelay"
-            app:layout_constraintTop_toTopOf="@+id/chooseDelay"
-            app:layout_constraintVertical_bias="0.200" />
-          -->
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="155dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/layout_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:background="@drawable/motor_controller_backgorund">
 
-        <ImageView
-            android:id="@+id/motorStopView"
-            android:layout_width="159dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/motor_stop" />
-
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/SensorView"
-            android:layout_width="159dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/convy"
-            app:layout_constraintBottom_toBottomOf="@+id/motorStopView"
-            app:layout_constraintEnd_toEndOf="@+id/motorStopView"
-            app:layout_constraintStart_toStartOf="@+id/motorStopView"
-            app:layout_constraintTop_toTopOf="@+id/motorStopView"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
-            android:id="@+id/textView3"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="TRM Error :"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/mSensorData"
-            app:layout_constraintEnd_toStartOf="@+id/mSensorData"
-            app:layout_constraintStart_toEndOf="@+id/motorStopView"
-            app:layout_constraintTop_toTopOf="@+id/mSensorData"
-            app:layout_constraintVertical_bias="0.0" />
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <!--
+            <ImageView
+                android:id="@+id/motorStopView"
+                android:layout_width="159dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/motor_stop" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/SensorView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/convy" />
+                -->
+
+            <com.ekn.gruzer.gaugelibrary.ArcGauge
+                android:id="@+id/trm_data"
+                android:layout_width="wrap_content"
+                android:layout_height="110dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/advent_pro"
+                    android:text="TRM Error"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <!--
+                <TextView
+                    android:id="@+id/mSensorData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="left"
+                    android:text="@string/no_data"
+                    android:textColor="#F50000"
+                    android:textSize="18sp" />-->
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:text="Sensor Data :"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/mTransmitterError"
-            app:layout_constraintEnd_toStartOf="@+id/mTransmitterError"
-            app:layout_constraintStart_toEndOf="@+id/motorStopView"
-            app:layout_constraintTop_toTopOf="@+id/mTransmitterError"
-            app:layout_constraintVertical_bias="1.0" />
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/mTransmitterError"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="42dp"
-            android:layout_marginBottom="11dp"
-            android:text="@string/no_data"
-            android:textColor="#FF0000"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/mSensorData"
+            <com.ekn.gruzer.gaugelibrary.ArcGauge
+                android:id="@+id/sensor_data"
+                android:layout_width="wrap_content"
+                android:layout_height="110dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/advent_pro"
+                    android:text="Sensor Data"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <!--
+                <TextView
+                    android:id="@+id/mTransmitterError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/no_data"
+                    android:gravity="left"
+                    android:textColor="#FF0000"
+                    android:textSize="18sp" />-->
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/status_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_margin="@dimen/margin_16_dp"
+        android:fillViewport="true"
+        android:background="@drawable/scrollview_backgorund">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/motor_controller_backgorund"
+                android:orientation="horizontal"
+                android:layout_margin="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/advent_pro"
+                    android:gravity="left"
+                    android:paddingLeft="4dp"
+                    android:text="Receiver 1"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/receiver1_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:gravity="right"
+                    android:paddingRight="4dp"
+                    android:text="Text View"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/motor_controller_backgorund"
+                android:orientation="horizontal"
+                android:layout_margin="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/advent_pro"
+                    android:gravity="left"
+                    android:paddingLeft="4dp"
+                    android:text="Transmitter 1"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/transmitter1_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:gravity="right"
+                    android:paddingRight="4dp"
+                    android:text="Text View"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/motor_controller_backgorund"
+                android:orientation="horizontal"
+                android:layout_margin="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/advent_pro"
+                    android:gravity="left"
+                    android:paddingLeft="4dp"
+                    android:text="Receiver 2"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/receiver2_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:gravity="right"
+                    android:paddingRight="4dp"
+                    android:text="Text View"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/motor_controller_backgorund"
+                android:orientation="horizontal"
+                android:layout_margin="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/advent_pro"
+                    android:gravity="left"
+                    android:paddingLeft="4dp"
+                    android:text="Transmitter 2"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/transmitter2_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:gravity="right"
+                    android:paddingRight="4dp"
+                    android:text="Text View"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/motor_controller_backgorund"
+                android:orientation="horizontal"
+                android:layout_margin="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/advent_pro"
+                    android:gravity="left"
+                    android:paddingLeft="4dp"
+                    android:text="PEDAL 1"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/pedal1_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:gravity="right"
+                    android:paddingRight="4dp"
+                    android:text="Text View"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/motor_controller_backgorund"
+                android:orientation="horizontal"
+                android:layout_margin="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/advent_pro"
+                    android:gravity="left"
+                    android:paddingLeft="4dp"
+                    android:text="PEDAL 2"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/pedal2_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:gravity="right"
+                    android:paddingRight="4dp"
+                    android:text="Text View"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/motor_controller_backgorund"
+                android:orientation="horizontal"
+                android:layout_margin="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/advent_pro"
+                    android:gravity="left"
+                    android:paddingLeft="4dp"
+                    android:text="ALARM"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/alarm_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:gravity="right"
+                    android:paddingRight="4dp"
+                    android:text="Text View"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="195dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/motor_controller_backgorund"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/mSensorData"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="42dp"
-            android:layout_marginBottom="144dp"
-            android:text="@string/no_data"
-            android:textColor="#F50000"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/mTransmitterError" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/send_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/custom_button_send"
+                android:text="Send"
+                android:textAlignment="gravity"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            -->
+
+        <!--
+            <TextView
+                android:id="@+id/chooseDelay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:text="Delay(seconds) :"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            -->
+        <!--
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Receiver 2 Status :"
+                        app:layout_constraintBottom_toTopOf="@+id/textView7"
+                        app:layout_constraintEnd_toStartOf="@+id/RX2Status"
+                        app:layout_constraintStart_toStartOf="@+id/textView5"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Transmitter 2 Status :"
+                        app:layout_constraintBottom_toTopOf="@+id/textView8"
+                        app:layout_constraintEnd_toStartOf="@+id/TX2Status"
+                        app:layout_constraintStart_toStartOf="@+id/textView6"
+                        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Transmitter 1 Status :"
+                        app:layout_constraintBottom_toTopOf="@+id/textView6"
+                        app:layout_constraintEnd_toStartOf="@+id/TX1Status"
+                        app:layout_constraintStart_toStartOf="@+id/textView2"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                    <ImageView
+                        android:id="@+id/CELL2"
+                        android:layout_width="56dp"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/textView24"
+                        app:layout_constraintStart_toStartOf="@+id/textView24"
+                        app:layout_constraintTop_toBottomOf="@+id/textView24"
+                        app:layout_constraintVertical_bias="0.2"
+                        app:srcCompat="@drawable/con_status" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="56dp"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/textView24"
+                        app:layout_constraintEnd_toEndOf="@+id/textView23"
+                        app:layout_constraintStart_toStartOf="@+id/textView23"
+                        app:layout_constraintTop_toBottomOf="@+id/textView23"
+                        app:srcCompat="@drawable/con_status" />
+
+                    <TextView
+                        android:id="@+id/mMotorStatus"
+                        android:layout_width="145dp"
+                        android:layout_height="26dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Motor has stopped!"
+                        android:textColor="#FF0000"
+                        android:textSize="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Receiver 1 Status :"
+                        app:layout_constraintBottom_toTopOf="@+id/textView5"
+                        app:layout_constraintEnd_toStartOf="@+id/RX1Status"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="PEDAL 1 Status :"
+                        app:layout_constraintBottom_toTopOf="@+id/textView22"
+                        app:layout_constraintEnd_toStartOf="@+id/Pedal1Status"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="PEDAL 2 Status :"
+                        app:layout_constraintBottom_toTopOf="@+id/mMotorStatus"
+                        app:layout_constraintStart_toStartOf="@+id/textView8"
+                        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="52dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginEnd="73dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="CELL1PRC"
+                        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/RX1Status"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="CELL2PRC"
+                        app:layout_constraintBottom_toTopOf="@+id/CELL2"
+                        app:layout_constraintEnd_toEndOf="@+id/textView23"
+                        app:layout_constraintStart_toStartOf="@+id/textView23"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+                    <TextView
+                        android:id="@+id/RX1Status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Obstacle"
+                        android:textColor="#FF0000"
+                        app:layout_constraintBottom_toTopOf="@+id/textView5"
+                        app:layout_constraintStart_toEndOf="@+id/textView2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/TX1Status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Error"
+                        android:textColor="#FF0000"
+                        app:layout_constraintBottom_toTopOf="@+id/RX2Status"
+                        app:layout_constraintEnd_toEndOf="@+id/RX1Status"
+                        app:layout_constraintStart_toEndOf="@+id/textView5"
+                        app:layout_constraintTop_toBottomOf="@+id/RX1Status" />
+
+                    <TextView
+                        android:id="@+id/RX2Status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Obstacle"
+                        android:textColor="#FF0000"
+                        app:layout_constraintBottom_toTopOf="@+id/textView7"
+                        app:layout_constraintEnd_toEndOf="@+id/TX1Status"
+                        app:layout_constraintStart_toEndOf="@+id/textView6"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                    <TextView
+                        android:id="@+id/TX2Status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Error"
+                        android:textColor="#FF0000"
+                        app:layout_constraintBottom_toTopOf="@+id/Pedal1Status"
+                        app:layout_constraintEnd_toEndOf="@+id/RX2Status"
+                        app:layout_constraintStart_toEndOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/RX2Status" />
+
+                    <TextView
+                        android:id="@+id/Pedal1Status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Not Pressed"
+                        android:textColor="#FF0000"
+                        app:layout_constraintBottom_toTopOf="@+id/Pedal2Status"
+                        app:layout_constraintEnd_toEndOf="@+id/TX2Status"
+                        app:layout_constraintStart_toEndOf="@+id/textView8"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                    <TextView
+                        android:id="@+id/Pedal2Status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Not Pressed"
+                        android:textColor="#FF0000"
+                        app:layout_constraintBottom_toTopOf="@+id/mMotorStatus"
+                        app:layout_constraintEnd_toEndOf="@+id/Pedal1Status"
+                        app:layout_constraintStart_toEndOf="@+id/textView22"
+                        app:layout_constraintTop_toBottomOf="@+id/Pedal1Status" />
+
+                    <Spinner
+                        android:id="@+id/delay_spinner"
+                        android:layout_width="124dp"
+                        android:layout_height="36dp"
+                        android:layout_marginBottom="87dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/send_button"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/chooseDelay"
+                        app:layout_constraintTop_toTopOf="@+id/chooseDelay"
+                        app:layout_constraintVertical_bias="0.200" />
+                      -->
+        <!--
+        </LinearLayout>
+        -->
+
+    </ScrollView>
 
 
 </LinearLayout>

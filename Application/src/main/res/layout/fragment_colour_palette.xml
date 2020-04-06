@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#81D4FA"
+    android:background="@drawable/custombackground"
     tools:context=".ControllerTab">
 
     <LinearLayout
