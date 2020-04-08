@@ -26,7 +26,7 @@ public class CustomDesignTab extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private AppBarLayout appBarLayout;
-    private ViewPager viewPager;
+    private LockableViewPager viewPager;
 
     static int registerValue[] = new int[5];
     static int deviceVersionRegister = 0x00000000;
@@ -120,13 +120,14 @@ public class CustomDesignTab extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_design_tab);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout_id);
-        viewPager = (ViewPager) findViewById(R.id.viewPager_id);
+        viewPager = (LockableViewPager) findViewById(R.id.viewPager_id);
 
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.AddFragment(new DCRFragment(),"DCR");
         adapter.AddFragment(new StatementCFGFragment(),"STATEMENTS");
         viewPager.setAdapter(adapter);
+        viewPager.setSwipeable(false);
         tabLayout.setupWithViewPager(viewPager);
         final Intent intent = getIntent();
 

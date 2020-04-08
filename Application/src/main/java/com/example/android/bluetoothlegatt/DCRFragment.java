@@ -5,9 +5,12 @@ import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -22,6 +25,7 @@ import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -43,7 +47,7 @@ public class DCRFragment extends Fragment {
     static TextView mL2CON;
     static TextView mDCR;
     static  TextView mDelayValue;
-    private Switch mLight_1, mLight_2, mMotor_2,mMotor_1;
+    private Button mLight_1, mLight_2, mMotor_2,mMotor_1;
     static Spinner mAlarm, mDelay;
     private CheckBox mRearPedal,mMotor1SS,mMotor2SS;
     private Button mSaveButton, mSendButton;
@@ -150,34 +154,34 @@ public class DCRFragment extends Fragment {
 
         //UI Sets
         mRegisterValue = (TextView) view.findViewById(R.id.RegisterValue);
-        mM1CON = (TextView) view.findViewById(R.id.M1CON);
-        mM2CON = (TextView) view.findViewById(R.id.M2CON);
-        mL1CON = (TextView) view.findViewById(R.id.L1CON);
-        mL2CON = (TextView) view.findViewById(R.id.L2CON);
-        mDCR   = (TextView) view.findViewById(R.id.DCR);
+//        mM1CON = (TextView) view.findViewById(R.id.M1CON);
+//        mM2CON = (TextView) view.findViewById(R.id.M2CON);
+//        mL1CON = (TextView) view.findViewById(R.id.L1CON);
+//        mL2CON = (TextView) view.findViewById(R.id.L2CON);
+//        mDCR   = (TextView) view.findViewById(R.id.DCR);
         mDelayValue = (TextView) view.findViewById(R.id.delayValue);
 
         mSaveButton = (Button) view.findViewById(R.id.saveButton);
         mSendButton = (Button) view.findViewById(R.id.sendButton);
 
         mSaveName = (EditText) view.findViewById(R.id.saveName);
-
+        mSaveName.setCursorVisible(false);
 
         mRearPedal = (CheckBox) view.findViewById(R.id.fswitch);
         mMotor1SS = (CheckBox) view.findViewById(R.id.m1soft);
         mMotor2SS = (CheckBox) view.findViewById(R.id.m2soft);
 
-        mLight_1 = (Switch) view.findViewById(R.id.light1);
-        mLight_2 = (Switch) view.findViewById(R.id.light2);
-        mMotor_1 = (Switch) view.findViewById(R.id.motor1);
-        mMotor_2 = (Switch) view.findViewById(R.id.motor);
+        mLight_1 = (Button) view.findViewById(R.id.light1);
+        mLight_2 = (Button) view.findViewById(R.id.light2);
+        mMotor_1 = (Button) view.findViewById(R.id.motor1);
+        mMotor_2 = (Button) view.findViewById(R.id.motor2);
 
         mRegisterValue.setText("0");
-        mM1CON.setText("0");
-        mM2CON.setText("0");
-        mL1CON .setText("0");
-        mL2CON.setText("0");
-        mDCR.setText("0");
+//        mM1CON.setText("0");
+//        mM2CON.setText("0");
+//        mL1CON .setText("0");
+//        mL2CON.setText("0");
+//        mDCR.setText("0");
 
 //        mDeviceName = getActivity().getIntent().getStringExtra(EXTRAS_DEVICE_NAME);
 //        mDeviceAddress = getActivity().getIntent().getStringExtra(EXTRAS_DEVICE_ADDRESS);
@@ -290,7 +294,7 @@ public class DCRFragment extends Fragment {
                             break;
 
                     }
-                    mDCR.setText(""+deviceConfigurationRegister);
+//                    mDCR.setText(""+deviceConfigurationRegister);
 
             }
 
@@ -316,7 +320,7 @@ public class DCRFragment extends Fragment {
 
 
         //byte byteValue = (byte) registerValue;
-        mM1CON.setText(""+motorOneControlRegister);
+//        mM1CON.setText(""+motorOneControlRegister);
         //mRegisterValue.setText(""+registerValue);
 
 
@@ -329,7 +333,7 @@ public class DCRFragment extends Fragment {
                 else {
                     motorOneControlRegister &= ~(1<<1);
                 }
-                mM1CON.setText(""+motorOneControlRegister);
+//                mM1CON.setText(""+motorOneControlRegister);
             }
         });
 
@@ -342,7 +346,7 @@ public class DCRFragment extends Fragment {
                 else {
                     motorTwoControlRegister &= ~(1<<1);
                 }
-                mM2CON.setText(""+motorTwoControlRegister);
+//                mM2CON.setText(""+motorTwoControlRegister);
             }
         });
 
@@ -355,70 +359,151 @@ public class DCRFragment extends Fragment {
                 else {
                     deviceConfigurationRegister &= ~(1<<2);
                 }
-                mDCR.setText(""+deviceConfigurationRegister);
+//                mDCR.setText(""+deviceConfigurationRegister);
             }
         });
 
-        mLight_1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mLight_1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (mLight_1.isChecked()) {
-                    Light1Check = true;
+            public void onClick(View v) {
+                Light1Check = !Light1Check;
+                if(Light1Check){
+                    mLight_1.setSelected(true);
                     lightOneControlRegister |= (1<<0);
-                }
-                else {
-                    Light1Check = false;
+                }else {
+                    mLight_1.setSelected(false);
                     lightOneControlRegister &= ~(1<<0);
                 }
-                mL1CON.setText(""+lightOneControlRegister);
             }
         });
 
-        mLight_2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mLight_2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (mLight_2.isChecked()) {
-                    Light2Check = true;
+            public void onClick(View v) {
+                Light2Check = !Light2Check;
+                if(Light2Check){
+                    mLight_2.setSelected(true);
                     lightTwoControlRegister |= (1<<0);
-                }
-                else {
-                    Light2Check = false;
+                } else {
+                    mLight_2.setSelected(false);
                     lightTwoControlRegister &= ~(1<<0);
                 }
-                mL2CON.setText(""+lightTwoControlRegister);
             }
         });
 
-        mMotor_2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mMotor_1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (mMotor_2.isChecked()) {
-                    Motor2Check = true;
-                    motorTwoControlRegister |= (1<<0);
-                }
-                else {
-                    Motor2Check = false;
-                    motorTwoControlRegister &= ~(1<<0);
-                }
-                mM2CON.setText(""+motorTwoControlRegister);
-            }
-        });
-
-        mMotor_1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (mMotor_1.isChecked()){
-                    Motor1Check = true;
+            public void onClick(View v) {
+                Motor1Check = !Motor1Check;
+                if (Motor1Check) {
+                    mMotor_1.setSelected(true);
                     motorOneControlRegister |= (1<<0);
-                }
-                else {
-                    Motor1Check = false;
+                } else {
+                    mMotor_1.setSelected(false);
                     motorOneControlRegister &= ~(1<<0);
                 }
-                mM1CON.setText(""+motorOneControlRegister);
-
             }
         });
+
+        mMotor_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Motor2Check = !Motor2Check;
+                if (Motor2Check) {
+                    mMotor_2.setSelected(true);
+                    motorTwoControlRegister |= (1<<0);
+                } else {
+                    mMotor_2.setSelected(false);
+                    motorTwoControlRegister &= ~(1<<0);
+                }
+            }
+        });
+
+
+//        mLight_1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (mLight_1.isChecked()) {
+//                    Light1Check = true;
+//                    lightOneControlRegister |= (1<<0);
+//                }
+//                else {
+//                    Light1Check = false;
+//                    lightOneControlRegister &= ~(1<<0);
+//                }
+//                mL1CON.setText(""+lightOneControlRegister);
+//            }
+//        });
+//
+//        mLight_2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (mLight_2.isChecked()) {
+//                    Light2Check = true;
+//                    lightTwoControlRegister |= (1<<0);
+//                }
+//                else {
+//                    Light2Check = false;
+//                    lightTwoControlRegister &= ~(1<<0);
+//                }
+//                mL2CON.setText(""+lightTwoControlRegister);
+//            }
+//        });
+//
+//        mMotor_2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (mMotor_2.isChecked()) {
+//                    Motor2Check = true;
+//                    motorTwoControlRegister |= (1<<0);
+//                }
+//                else {
+//                    Motor2Check = false;
+//                    motorTwoControlRegister &= ~(1<<0);
+//                }
+//                mM2CON.setText(""+motorTwoControlRegister);
+//            }
+//        });
+//
+//        mMotor_1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (mMotor_1.isChecked()){
+//                    Motor1Check = true;
+//                    motorOneControlRegister |= (1<<0);
+//                }
+//                else {
+//                    Motor1Check = false;
+//                    motorOneControlRegister &= ~(1<<0);
+//                }
+//                mM1CON.setText(""+motorOneControlRegister);
+//
+//            }
+//        });
+
+        mSaveName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSaveName.setCursorVisible(true);
+            }
+        });
+
+        mSaveName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId== EditorInfo.IME_ACTION_DONE){
+                    //Clear focus here from edittext
+                    mSaveName.clearFocus();
+                    mSaveName.setCursorVisible(false);
+                } else if (actionId == KeyEvent.KEYCODE_BACK) {
+                    mSaveName.clearFocus();
+                    mSaveName.setCursorVisible(false);
+                }
+                return false;
+            }
+        });
+
+
 
 
         mSaveButton.setOnClickListener(new View.OnClickListener() {
@@ -489,6 +574,7 @@ public class DCRFragment extends Fragment {
 
 
     }
+
 
 //    private void updateConnectionState(final int resourceId) {
 ////        runOnUiThread(new Runnable() {
@@ -582,4 +668,6 @@ public class DCRFragment extends Fragment {
         }
         return dst;
     }
+
+
 }

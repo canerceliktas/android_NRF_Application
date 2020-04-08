@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
 
@@ -31,7 +32,7 @@ import static com.example.android.bluetoothlegatt.DCRFragment.mM2CON;
  */
 public class StatementCFGFragment extends Fragment {
     View view;
-    private Switch mLight_1, mLight_2, mMotor_2;
+    private Button mLight_1, mLight_2, mMotor_2;
     static Spinner mMotor2first, mMotor2second, mMotor2third,
             mLight1first, mLight1second, mLight1third, mLight2first,
             mLight2second, mLight2third,mLight2PowerOn, mLight1PowerOn, mMotor2PowerOn;
@@ -48,9 +49,9 @@ public class StatementCFGFragment extends Fragment {
 
         //UI Sets
 
-        mLight_1 = (Switch)view.findViewById(R.id.light1);
-        mLight_2 = (Switch) view.findViewById(R.id.light2);
-        mMotor_2 = (Switch) view.findViewById(R.id.motor);
+        mLight_1 = (Button)view.findViewById(R.id.light1);
+        mLight_2 = (Button) view.findViewById(R.id.light2);
+        mMotor_2 = (Button) view.findViewById(R.id.motor2);
 
 
 
@@ -150,7 +151,7 @@ public class StatementCFGFragment extends Fragment {
                         lightOneControlRegister &= ~(1<<4); //0 yap
                         break;
                 }
-                mL1CON.setText(""+lightOneControlRegister);
+//                mL1CON.setText(""+lightOneControlRegister);
             }
 
             @Override
@@ -183,7 +184,7 @@ public class StatementCFGFragment extends Fragment {
                         lightOneControlRegister &= ~(1<<7); //0 yap
                         break;
                 }
-                mL1CON.setText(""+lightOneControlRegister);
+//                mL1CON.setText(""+lightOneControlRegister);
 
             }
 
@@ -217,7 +218,7 @@ public class StatementCFGFragment extends Fragment {
                         lightOneControlRegister &= ~(1<<10); //0 yap
                         break;
                 }
-                mL1CON.setText(""+lightOneControlRegister);
+ //               mL1CON.setText(""+lightOneControlRegister);
             }
 
             @Override
@@ -250,7 +251,7 @@ public class StatementCFGFragment extends Fragment {
                         lightOneControlRegister &= ~(1<<13); //0 yap
                         break;
                 }
-                mL1CON.setText(""+lightOneControlRegister);
+ //               mL1CON.setText(""+lightOneControlRegister);
 
             }
 
@@ -284,7 +285,7 @@ public class StatementCFGFragment extends Fragment {
                         lightTwoControlRegister &= ~(1<<4); //0 yap
                         break;
                 }
-                mL2CON.setText(""+lightTwoControlRegister);
+  //              mL2CON.setText(""+lightTwoControlRegister);
             }
 
             @Override
@@ -317,7 +318,7 @@ public class StatementCFGFragment extends Fragment {
                         lightTwoControlRegister &= ~(1<<7); //0 yap
                         break;
                 }
-                mL2CON.setText(""+lightTwoControlRegister);
+ //               mL2CON.setText(""+lightTwoControlRegister);
             }
 
             @Override
@@ -350,7 +351,7 @@ public class StatementCFGFragment extends Fragment {
                         lightTwoControlRegister &= ~(1<<10); //0 yap
                         break;
                 }
-                mL2CON.setText(""+lightTwoControlRegister);
+//                mL2CON.setText(""+lightTwoControlRegister);
             }
 
             @Override
@@ -383,7 +384,7 @@ public class StatementCFGFragment extends Fragment {
                         lightTwoControlRegister &= ~(1<<13); //0 yap
                         break;
                 }
-                mL2CON.setText(""+lightTwoControlRegister);
+  //              mL2CON.setText(""+lightTwoControlRegister);
             }
 
             @Override
@@ -426,7 +427,7 @@ public class StatementCFGFragment extends Fragment {
                         motorTwoControlRegister |= ((1<<4) | (1<<2));
                         break;
                 }
-                mM2CON.setText(""+motorTwoControlRegister);
+//                mM2CON.setText(""+motorTwoControlRegister);
             }
 
             @Override
@@ -468,7 +469,7 @@ public class StatementCFGFragment extends Fragment {
                         motorTwoControlRegister |= ((1<<7) | (1<<5));
                         break;
                 }
-                mM2CON.setText(""+motorTwoControlRegister);
+ //               mM2CON.setText(""+motorTwoControlRegister);
             }
 
             @Override
@@ -510,7 +511,7 @@ public class StatementCFGFragment extends Fragment {
                         motorTwoControlRegister |= ((1<<10) | (1<<8));
                         break;
                 }
-                mM2CON.setText(""+motorTwoControlRegister);
+ //               mM2CON.setText(""+motorTwoControlRegister);
             }
 
             @Override
@@ -552,7 +553,7 @@ public class StatementCFGFragment extends Fragment {
                         motorTwoControlRegister |= ((1<<13) | (1<<11));
                         break;
                 }
-                mM2CON.setText(""+motorTwoControlRegister);
+   //             mM2CON.setText(""+motorTwoControlRegister);
             }
 
             @Override
@@ -584,7 +585,7 @@ public class StatementCFGFragment extends Fragment {
                         break;
 
                 }
-                mDCR.setText(""+deviceConfigurationRegister);
+//                mDCR.setText(""+deviceConfigurationRegister);
             }
 
             @Override
