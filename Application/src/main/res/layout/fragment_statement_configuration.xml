@@ -31,6 +31,7 @@
             <TextView
                 android:layout_width="206dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
                 android:gravity="end"
                 android:layout_gravity="end"
                 android:layout_marginEnd="2dp"
@@ -55,94 +56,115 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
+                    android:background="@drawable/scrollview_background_solid">
                     <Spinner
                         android:id="@+id/light1PowerOn"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"
+                        />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:text="Power On"
                         android:textSize="@dimen/margin_16_dp"
-                        android:layout_gravity="center"
-                        android:textStyle="bold" />
+                        android:textColor="#FFFFFF"
+                        android:layout_gravity="center_horizontal"
+                        android:textStyle="bold"
+                        />
 
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
-
+                    android:background="@drawable/scrollview_background_solid">
                     <Spinner
                         android:id="@+id/light1firstPress"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
 
                     <TextView
                         android:id="@+id/textView19"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
                         android:text="1. Press"
+                        android:textColor="#FF0000"
                         android:textSize="@dimen/margin_16_dp"
-                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="@dimen/margin_16_dp"
-                android:background="@drawable/scrollview_backgorund">
+                android:background="@drawable/scrollview_background_solid">
 
                     <Spinner
                         android:id="@+id/light1secondPress"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
                         android:text="2. Press"
                         android:textSize="@dimen/margin_16_dp"
-                        android:layout_gravity="center"
+                        android:textColor="#00FF00"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
+                    android:background="@drawable/scrollview_background_solid">
 
                     <Spinner
                         android:id="@+id/light1thirdPress"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
                         android:text="3.press"
                         android:textSize="@dimen/margin_16_dp"
-                        android:layout_gravity="center"
+                        android:textColor="#0000FF"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -178,6 +200,8 @@
             <TextView
                 android:layout_width="206dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+
                 android:gravity="end"
                 android:layout_gravity="end"
                 android:layout_marginEnd="2dp"
@@ -202,92 +226,112 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
+                    android:background="@drawable/scrollview_background_solid">
 
                     <Spinner
                         android:id="@+id/light2PowerOn"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:text="Power On"
                         android:textSize="@dimen/margin_16_dp"
-                        android:layout_gravity="center"
-                        android:textStyle="bold" />
+                        android:textColor="#FFFFFF"
+                        android:layout_gravity="center_horizontal"
+                        android:textStyle="bold"/>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
+                    android:background="@drawable/scrollview_background_solid">
 
                     <Spinner
                         android:id="@+id/light2firstPress"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1. Press"
-                        android:textSize="@dimen/margin_16_dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:text="1. Press"
+                        android:textColor="#FF0000"
+                        android:textSize="@dimen/margin_16_dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
+                    android:background="@drawable/scrollview_background_solid">
 
                     <Spinner
                         android:id="@+id/light2secondPress"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
 
                     <TextView
-                        android:id="@+id/textView20"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
                         android:text="2. Press"
                         android:textSize="@dimen/margin_16_dp"
-                        android:layout_gravity="center"
+                        android:textColor="#00FF00"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
+                    android:background="@drawable/scrollview_background_solid">
 
                     <Spinner
                         android:id="@+id/light2thirdPress"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
                         android:text="3.press"
                         android:textSize="@dimen/margin_16_dp"
-                        android:layout_gravity="center"
+                        android:textColor="#0000FF"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -323,6 +367,7 @@
             <TextView
                 android:layout_width="206dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
                 android:gravity="end"
                 android:layout_gravity="end"
                 android:layout_marginEnd="2dp"
@@ -347,91 +392,112 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
+                    android:background="@drawable/scrollview_background_solid">
 
                     <Spinner
                         android:id="@+id/motor2PowerOn"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:text="Power On"
                         android:textSize="@dimen/margin_16_dp"
-                        android:layout_gravity="center"
+                        android:textColor="#FFFFFF"
+                        android:layout_gravity="center_horizontal"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
+                    android:background="@drawable/scrollview_background_solid">
 
                     <Spinner
                         android:id="@+id/motor2firstPress"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1. Press"
-                        android:textSize="@dimen/margin_16_dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:text="1. Press"
+                        android:textColor="#FF0000"
+                        android:textSize="@dimen/margin_16_dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
+                    android:background="@drawable/scrollview_background_solid">
 
                     <Spinner
                         android:id="@+id/motor2secondPress"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
                         android:text="2. Press"
                         android:textSize="@dimen/margin_16_dp"
-                        android:layout_gravity="center"
+                        android:textColor="#00FF00"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/margin_16_dp"
-                    android:background="@drawable/scrollview_backgorund">
+                    android:background="@drawable/scrollview_background_solid">
 
                     <Spinner
                         android:id="@+id/motor2thirdPress"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16_dp"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
                         android:text="3.press"
                         android:textSize="@dimen/margin_16_dp"
-                        android:layout_gravity="center"
+                        android:textColor="#0000FF"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
                         android:textStyle="bold" />
 
                 </LinearLayout>

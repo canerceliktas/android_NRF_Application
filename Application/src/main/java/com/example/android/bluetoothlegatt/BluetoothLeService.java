@@ -71,6 +71,9 @@ public class BluetoothLeService extends Service {
             UUID.fromString(SampleGattAttributes.HEART_RATE_MEASUREMENT);
     public final static UUID UUID_TRM_ERROR =
             UUID.fromString(SampleGattAttributes.TRANSMITTER_ERROR);
+    public final static UUID UUID_DEVICE_INFO =
+            UUID.fromString(SampleGattAttributes.DEVICE_INFO_CHARACTERISTIC);
+
 
 
     // Implements callback methods for GATT events that the app cares about.  For example,
@@ -317,6 +320,12 @@ public class BluetoothLeService extends Service {
             e.printStackTrace();
         }
         if (UUID_TRM_ERROR.equals(characteristic.getUuid())) {
+            BluetoothGattDescriptor descriptor = characteristic.getDescriptor(UUID.fromString(SampleGattAttributes.CLIENT_CHARACTERISTIC_CONFIG));
+            descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+            mBluetoothGatt.writeDescriptor(descriptor);
+        }
+
+        if (UUID_DEVICE_INFO.equals(characteristic.getUuid())) {
             BluetoothGattDescriptor descriptor = characteristic.getDescriptor(UUID.fromString(SampleGattAttributes.CLIENT_CHARACTERISTIC_CONFIG));
             descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
             mBluetoothGatt.writeDescriptor(descriptor);

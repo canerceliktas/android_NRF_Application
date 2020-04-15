@@ -29,6 +29,7 @@ public class SampleGattAttributes {
     public static String CUSTOM_SETTING_SERVICE ="aee4f00f-91d2-11e9-bc42-52a6f7764f64";
     public static String TRANSMITTER_ERROR = "aee4beeb-91d2-11e9-bc42-52a6f7764f64";
     public static String CUSTOM_SETTINGS_CHARACTERISTIC = "aee4beed-91d2-11e9-bc42-52a6f7764f64";
+    public static String DEVICE_INFO_CHARACTERISTIC = "aee4beaf-91d2-11e9-bc42-52a6f7764f64";
 
     static {
         // Sample Services.

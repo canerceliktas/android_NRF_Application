@@ -47,6 +47,7 @@ public class WelcomeScreenActivity extends Activity {
     Button mProgramLoad;
     Button mMaintance;
     Button mColorPicker;
+    Button mDevices;
     ImageButton mConnect, mDisconnect;
     Button mExit;
     private String mDeviceName;
@@ -153,6 +154,7 @@ public class WelcomeScreenActivity extends Activity {
         mMaintance = (Button) findViewById(R.id.Maintenance);
         mProgramLoad = (Button) findViewById(R.id.LoadCustomProgram);
         mColorPicker = (Button) findViewById(R.id.ColorPicker);
+        mDevices = (Button) findViewById(R.id.Devices);
         final Intent intent = getIntent();
         mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
         mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
@@ -224,6 +226,17 @@ public class WelcomeScreenActivity extends Activity {
                 intent_3.putExtra(WelcomeScreenActivity.EXTRAS_DEVICE_ADDRESS, mDeviceAddress);
 
                 startActivity(intent_3);
+            }
+        });
+
+        mDevices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent intent_4 = new Intent(WelcomeScreenActivity.this, DeviceMapActivity.class);
+                intent_4.putExtra(WelcomeScreenActivity.EXTRAS_DEVICE_NAME, mDeviceName);
+                intent_4.putExtra(WelcomeScreenActivity.EXTRAS_DEVICE_ADDRESS, mDeviceAddress);
+
+                startActivity(intent_4);
             }
         });
 

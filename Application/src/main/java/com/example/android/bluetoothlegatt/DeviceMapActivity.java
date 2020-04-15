@@ -1,5 +1,8 @@
 package com.example.android.bluetoothlegatt;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.BroadcastReceiver;
@@ -10,57 +13,64 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.tabs.TabLayout;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
+import android.widget.Button;
+import android.widget.ExpandableListView;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import static android.content.ContentValues.TAG;
 
-public class CustomDesignTab extends AppCompatActivity {
+public class DeviceMapActivity extends AppCompatActivity {
 
-    private TabLayout tabLayout;
-    private AppBarLayout appBarLayout;
-    private ViewPager viewPager;
-
-    static int registerValue[] = new int[5];
-    static int deviceVersionRegister = 0x00000000;
-    static int deviceConfigurationRegister = 0x0000;
-    static int motorOneControlRegister = 0x00;
-    static int motorTwoControlRegister = 0x0000;
-    static int lightOneControlRegister = 0x0000;
-    static int lightTwoControlRegister = 0x0000;
-
-    private BluetoothLeService mBluetoothLeService, mBluetoothLeService4Fragment;
-    private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
-            new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
-
-    private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics4Fragament =
-            new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
-
-
-    private String mDeviceName;
-    private String mDeviceAddress;
-
+    TextView mDeviceNameMap, mDeviceAddressMap, mPortAddress, mDeviceType;
     private boolean isReconnect = false;
     private boolean mConnected = false;
 
-
-    private final String LIST_NAME = "NAME";
-    private final String LIST_UUID = "UUID";
-
+    private ArrayList<Device_Class> deviceList;
+    private GridView deviceGridView;
+    CustomGridViewAdapter gridViewAdapter;
 
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
 
+    private String mDeviceName;
+    private String mDeviceAddress;
 
-    private final ServiceConnection mServiseConnection = new ServiceConnection() {
+    public BluetoothGattCharacteristic device_info_characteristic;
+
+
+
+    private final static String TAG = DeviceMapActivity.class.getSimpleName();
+
+    private ExpandableListView mGattServicesList;
+
+    private BluetoothLeService mBluetoothLeService;
+    private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
+            new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
+
+    private BluetoothGattCharacteristic mNotifyCharacteristic;
+    private BluetoothGattCharacteristic mWriteCharacteristic;
+
+
+    public ArrayList<BluetoothGattCharacteristic> readable_chars;
+    public BluetoothGattCharacteristic sensor_data_characteristic;
+    public BluetoothGattCharacteristic trm_error_characteristic;
+    public static BluetoothDevice device;
+
+    private final String LIST_NAME = "NAME";
+    private final String LIST_UUID = "UUID";
+
+    private final ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mBluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
@@ -97,19 +107,20 @@ public class CustomDesignTab extends AppCompatActivity {
                     }
                 }
                 mConnected = true;
-                updateConnectionState(R.string.connected);
+                //updateConnectionState(R.string.connected);
                 getGattServices(mBluetoothLeService.getSupportedGattServices());
-                //invalidateOptionsMenu();
+                invalidateOptionsMenu();
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
                 //mConnected = false;
                 //updateConnectionState(R.string.disconnected);
-                //invalidateOptionsMenu();
+                invalidateOptionsMenu();
                 //clearUI();
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
                 // Show all the supported services and characteristics on the user interface.
                 getGattServices(mBluetoothLeService.getSupportedGattServices());
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
-
+                String data = intent.getStringExtra(BluetoothLeService.EXTRA_DATA);
+//                mDeviceType.setText(data);
                 //displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
 
             }
@@ -119,28 +130,41 @@ public class CustomDesignTab extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_design_tab);
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout_id);
-        viewPager = (ViewPager) findViewById(R.id.viewPager_id);
+        setContentView(R.layout.activity_device_map);
 
+        mDeviceNameMap = (TextView) findViewById(R.id.device_name_map);
+        mDeviceAddressMap = (TextView) findViewById(R.id.device_address_map);
+        mDeviceType = (TextView) findViewById(R.id.device_type);
+        mPortAddress = (TextView) findViewById(R.id.port_address);
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.AddFragment(new DCRFragment(),"DCR");
-        adapter.AddFragment(new StatementCFGFragment(),"STATEMENTS");
-        viewPager.setAdapter(adapter);
-        //viewPager.setSwipeable(false);
-        tabLayout.setupWithViewPager(viewPager);
         final Intent intent = getIntent();
-
-        mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
         mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
+        mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
-        Intent gattServiceIntent = new Intent(CustomDesignTab.this, BluetoothLeService.class);
-        bindService(gattServiceIntent, mServiseConnection, BIND_AUTO_CREATE);
+        mDeviceNameMap.setText(""+mDeviceName);
+        mDeviceAddressMap.setText(""+mDeviceAddress);
+        mDeviceType.setText("Master");
+        mPortAddress.setText("0x25");
+        initialize();
+        fillArrayList(deviceList);
 
+        Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
+        bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
 
+    }
 
+    private void initialize() {
+        deviceList = new ArrayList<Device_Class>();
+        deviceGridView = (GridView) findViewById(R.id.grid);
+        gridViewAdapter = new CustomGridViewAdapter(DeviceMapActivity.this, deviceList);
+        deviceGridView.setAdapter(gridViewAdapter);
+    }
 
+    private void fillArrayList(ArrayList<Device_Class> deviceList) {
+        for (int index = 0; index < 20; index++) {
+            Device_Class device = new Device_Class(R.drawable.ic_usb_black_24dp, 0x27 + index, 1 + index);
+            deviceList.add(device);
+        }
     }
 
     @Override
@@ -156,30 +180,14 @@ public class CustomDesignTab extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        //unregisterReceiver(mGattUpdateReceiver);
+        unregisterReceiver(mGattUpdateReceiver);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        unbindService(mServiseConnection);
-//        mBluetoothLeService = null;
-    }
-
-    private void updateConnectionState(final int resourceId) {
-//        runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (mConnected){
-//                    mConnectionState.setTextColor(0xFF00FF00);
-//                }
-//                else{
-//                    mConnectionState.setTextColor(0xFFFF0000);
-//                }
-//
-//                mConnectionState.setText(resourceId);
-//            }
-//        });
+        unbindService(mServiceConnection);
+        mBluetoothLeService = null;
     }
 
     private void getGattServices(List<BluetoothGattService> gattServices) {
@@ -222,10 +230,15 @@ public class CustomDesignTab extends AppCompatActivity {
                 }
                 mGattCharacteristics.add(charas);
                 gattCharacteristicData.add(gattCharacteristicGroupData);
-            }
-//            mGattCharacteristics4Fragament = mGattCharacteristics;
-//            mBluetoothLeService4Fragment = mBluetoothLeService;
 
+                if(mGattCharacteristics.size()>=3) {
+                    if(mGattCharacteristics.get(2).size()>=7) {
+                        device_info_characteristic = mGattCharacteristics.get(2).get(6);
+                        mBluetoothLeService.setCharacteristicNotification(device_info_characteristic, true);
+                    }
+                }
+
+            }
 
         }
     }
@@ -237,13 +250,5 @@ public class CustomDesignTab extends AppCompatActivity {
         intentFilter.addAction(BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED);
         intentFilter.addAction(BluetoothLeService.ACTION_DATA_AVAILABLE);
         return intentFilter;
-    }
-
-    public BluetoothLeService getmBluetoothLeService() {
-        return mBluetoothLeService;
-    }
-
-    public ArrayList<ArrayList<BluetoothGattCharacteristic>> getmGattCharacteristics() {
-        return mGattCharacteristics;
     }
 }
