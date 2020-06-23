@@ -1,5 +1,5 @@
 
-Android BluetoothLeGatt Sample
+Android BLE Project
 ===================================
 
 This sample demonstrates how to use the Bluetooth LE Generic Attribute Profile (GATT)
@@ -17,8 +17,6 @@ hosted on a given Bluetooth LE device.
 
 The Activities communicate with the Service, which in turn interacts with the [Bluetooth LE API][2].
 
-[1]:http://developer.android.com/reference/android/app/Service.html
-[2]:https://developer.android.com/reference/android/bluetooth/BluetoothGatt.html
 
 Pre-requisites
 --------------
@@ -27,13 +25,6 @@ Pre-requisites
 - Android Build Tools v27.0.2
 - Android Support Repository
 
-Screenshots
--------------
-
-<img src="screenshots/1-main.png" height="400" alt="Screenshot"/> <img src="screenshots/2-detail.png" height="400" alt="Screenshot"/> 
-
-Getting Started
----------------
 
 This sample uses the Gradle build system. To build this project, use the
 "gradlew build" command or use "Import Project" in Android Studio.
