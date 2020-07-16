@@ -14,6 +14,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
@@ -36,9 +37,13 @@ public class DeviceMapActivity extends AppCompatActivity {
     private boolean isReconnect = false;
     private boolean mConnected = false;
 
+    private int counter = 0;
+    private String old_data;
+
     private ArrayList<Device_Class> deviceList;
     private GridView deviceGridView;
     CustomGridViewAdapter gridViewAdapter;
+    private Button mRefreshButton;
 
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
@@ -46,7 +51,7 @@ public class DeviceMapActivity extends AppCompatActivity {
     private String mDeviceName;
     private String mDeviceAddress;
 
-    public BluetoothGattCharacteristic device_info_characteristic;
+    public BluetoothGattCharacteristic device_info_characteristic,get_device_info_characteristic;
 
 
 
@@ -120,6 +125,12 @@ public class DeviceMapActivity extends AppCompatActivity {
                 getGattServices(mBluetoothLeService.getSupportedGattServices());
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
                 String data = intent.getStringExtra(BluetoothLeService.EXTRA_DATA);
+                if(!data.equals(old_data)) {
+                    Device_Class device = new Device_Class(R.drawable.ic_usb_black_24dp, Integer.parseInt(data), "RGB");
+                    deviceList.add(device);
+                    old_data = data;
+                }
+
 //                mDeviceType.setText(data);
                 //displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
 
@@ -131,6 +142,8 @@ public class DeviceMapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_map);
+
+        mRefreshButton = (Button) findViewById(R.id.refresh_button);
 
         mDeviceNameMap = (TextView) findViewById(R.id.device_name_map);
         mDeviceAddressMap = (TextView) findViewById(R.id.device_address_map);
@@ -146,10 +159,24 @@ public class DeviceMapActivity extends AppCompatActivity {
         mDeviceType.setText("Master");
         mPortAddress.setText("0x25");
         initialize();
-        fillArrayList(deviceList);
+        //fillArrayList(deviceList);
 
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+
+        mRefreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    deviceList.clear();
+                    get_device_info_characteristic.setValue(String.valueOf(counter));
+                    mBluetoothLeService.writeCharacteristic(get_device_info_characteristic);
+
+                    ++counter;
+                    if(counter>255)
+                        counter=0;
+            }
+        });
 
     }
 
@@ -160,12 +187,12 @@ public class DeviceMapActivity extends AppCompatActivity {
         deviceGridView.setAdapter(gridViewAdapter);
     }
 
-    private void fillArrayList(ArrayList<Device_Class> deviceList) {
-        for (int index = 0; index < 20; index++) {
-            Device_Class device = new Device_Class(R.drawable.ic_usb_black_24dp, 0x27 + index, 1 + index);
-            deviceList.add(device);
-        }
-    }
+//    private void fillArrayList(ArrayList<Device_Class> deviceList) {
+//        for (int index = 0; index < 20; index++) {
+//            Device_Class device = new Device_Class(R.drawable.ic_usb_black_24dp, 0x27 + index, 1 + index);
+//            deviceList.add(device);
+//        }
+//    }
 
     @Override
     protected void onResume() {
@@ -235,6 +262,7 @@ public class DeviceMapActivity extends AppCompatActivity {
                     if(mGattCharacteristics.get(2).size()>=7) {
                         device_info_characteristic = mGattCharacteristics.get(2).get(6);
                         mBluetoothLeService.setCharacteristicNotification(device_info_characteristic, true);
+                        get_device_info_characteristic = mGattCharacteristics.get(2).get(5);
                     }
                 }
 

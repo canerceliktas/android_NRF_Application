@@ -4,9 +4,9 @@ public class Device_Class {
 
     private int deviceIMG;
     private int portAddress;
-    private int deviceType;
+    private String deviceType;
 
-    public Device_Class(int deviceIMG, int portAddress, int deviceType) {
+    public Device_Class(int deviceIMG, int portAddress, String deviceType) {
         this.deviceIMG = deviceIMG;
         this.portAddress = portAddress;
         this.deviceType = deviceType;
@@ -28,11 +28,11 @@ public class Device_Class {
         this.portAddress = portAddress;
     }
 
-    public int getDeviceType() {
+    public String getDeviceType() {
         return deviceType;
     }
 
-    public void setDeviceType(int deviceType) {
+    public void setDeviceType(String deviceType) {
         this.deviceType = deviceType;
     }
 }

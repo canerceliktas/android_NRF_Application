@@ -28,7 +28,7 @@ import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
-public class ControllerTab extends AppCompatActivity {
+public class  ControllerTab extends AppCompatActivity {
 
     private TabLayout tabLayout_controller;
     private AppBarLayout appBarLayout;
